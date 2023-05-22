@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.model.dao.ProgramDao">
+	<!-- <resultMap type="com.ssafy.ssafit.model.dto.Program" id="programMap"> 
+		<result column="review_id" property="review_id"/> <result column="user_id" 
+		property="user_id"/> <result column="program_id" property="program_id"/> 
+		<result column="parent_id" property="parent_id"/> <result column="article_id" 
+		property="article_id"/> <result column="review_content" property="review_content"/> 
+		<result column="review_like_cnt" property="review_like_cnt"/> <result column="depth" 
+		property="depth"/> <result column="review_reg_date" property="review_reg_date"/> 
+		</resultMap> <resultMap type="com.ssafy.ssafit.model.dto.Like" id="likeMap"> 
+		<result column="like_id" property="like_id"/> <result column="exercise_name" 
+		property="exercise_name"/> <result column="program_id" property="program_id_like"/> 
+		<result column="parent_id" property="parent_id_like"/> <result column="article_id" 
+		property="article_id"/> <result column="like_property" property="like_property"/> 
+		</resultMap> -->
+
+
+
+	<!-- 프로그램 전체 조회 -->
+	<select id="selectAll" resultType="Program">
+		SELECT *
+		FROM program
+	</select>
+
+	<!-- 프로그램 하나 조회 -->
+	<select id="selectOne" resultType="Program">
+		SELECT *
+		FROM program
+		Where
+		program_id = #{program_id};
+	</select>
+
+	<!-- 프로그램 등록 -->
+	<insert id="insertProgram" parameterType="Program">
+		INSERT INTO program
+		(user_id, program_difficulty, program_title, program_content,
+		program_goal, program_video_id)
+		VALUES (#{user_id},
+		#{program_difficulty}, #{program_title}, #{program_content},
+		#{program_goal}, #{program_video_id})
+	</insert>
+
+	<!-- 프로그램 삭제 -->
+	<delete id="deleteProgram" parameterType="int">
+		DELETE FROM program
+		WHERE program_id = #{program_id}
+	</delete>
+
+	<!-- 프로그램 수정 -->
+	<update id="updateProgram" parameterType="Program">
+		UPDATE program
+		SET
+		program_difficulty = #{program_difficulty}, program_title =
+		#{program_title}, program_content = #{program_content}, program_goal =
+		#{program_goal}, program_video_id = #{program_video_id}
+		WHERE program_id = #{program_id}
+		AND user_id = #{user_id}
+	</update>
+
+
+	<!----------------------------------------------------------------------------------------- -->
+	<!-- 운동 프로그램에 대한 좋아요! -->
+	<!----------------------------------------------------------------------------------------- -->
+
+	<!-- 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 했는지 Like를 가져옴 -->
+	<select id="selectLikeByuserFromProgram" parameterType="Map"
+		resultType="Like">
+		SELECT *
+		FROM like
+		WHERE program_id = #{program_id}
+		AND
+		user_id = #{user_id}
+	</select>
+	<!-- 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 입력 -->
+	<!-- 처음에 좋아요 혹은 싫어요를 한 적이 없을 때 -->
+	<insert id="insertLikeToProgram" parameterType="Map">
+		INSERT INTO like
+		(user_id, program_id, like_property)
+		VALUES (#{user_id}, #{program_id},
+		#{like_property})
+	</insert>
+	<!-- 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 변경함 -->
+	<update id="updateLikeFromProgram" parameterType="Map">
+		UPDATE like
+		SET
+		like_property = #{like_property}
+		WHERE program_id = #{program_id}
+		AND
+		user_id = #{user_id}
+	</update>
+	<!-- 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 취소함 -->
+	<delete id="deleteLikeFromProgram" parameterType="Like">
+		DELETE FROM
+		like
+		WHERE like_id = #{like_id}
+	</delete>
+
+
+
+
+
+
+</mapper>
