@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.model.dao.UserDao">
+	<!-- <resultMap type="User" id="userMap">
+		<result column="user_id" property="userId"/>
+		<result column="user_password" property="userPassword"/>
+		<result column="user_name" property="userName"/>
+		<result column="user_nickname" property="userNickname"/>
+		<result column="phone_NO" property="phoneNo"/>
+	</resultMap> -->
+
+	<select id="selectAll" resultType="User">
+		SELECT *
+		FROM user
+	</select>
+	
+	<!-- 입력 받은 'id' 해당하는  -->
+	<select id="selectOne" parameterType="String" resultType="User">
+		SELECT *
+		FROM user
+		WHERE user_id = #{user_id}
+	</select>
+	
+	<!-- 테이블에 user 등록 -->
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO user
+		VALUES (#{user_id}, #{user_password}, #{user_name}, #{user_nickname}, #{email}, #{birth}, #{phone_no}, #{gender}, #{squat}, #{bench_press}, #{dead_lift}, #{sbd}, #{question_1}, #{question_2})
+	</insert>
+	
+</mapper>
