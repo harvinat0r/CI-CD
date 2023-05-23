@@ -4,19 +4,32 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.ssafit.model.dao.ExerciseDao">
 
-    <!-- 검색 기준으로 내림차순 정렬 후 조회  -->
+	<!-- 모든 운동 조회 -->
+	<select id="selectAll" resultType="Exercise">
+		SELECT *
+		FROM exercise
+	</select>
+	
+	<!-- 운동 검색 cnt 증가 -->
+	<update id="increaseSearch" parameterType="String">
+		UPDATE exercise
+		SET exercise_search_cnt = exercise_search_cnt + 1
+		WHERE exercise_name = #{exercise_name}
+	</update>
+
+    <!-- 검색수 기준으로 내림차순 정렬 후 조회  -->
     <select id="bySearch" resultType="Exercise">
         SELECT *
         FROM exercise
-        ORDER BY exercise_search_cnt DESC;
+        ORDER BY exercise_search_cnt DESC
+        LIMIT 10
     </select>
     
-    <!-- 검색 기준으로 내림차순 정렬 후 조회  -->
+    <!-- 좋아요 기준으로 내림차순 정렬 후 조회  -->
     <select id="byLike" resultType="Exercise">
         SELECT *
         FROM exercise
-        ORDER BY exercise_like_cnt DESC;
-        <!-- LIMIT 4; -->
+        ORDER BY exercise_like_cnt DESC
+        LIMIT 10
     </select>
-	
 </mapper>
