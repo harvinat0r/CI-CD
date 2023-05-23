@@ -63,7 +63,7 @@ public class ReviewRestController {
 	
 	// 게시판 댓글 가져와. 날짜 기준 내림차순
 	@ApiOperation(value="게시판 댓글", notes = "게시판에 대한 댓글들 가져와")
-	@GetMapping("/{article_id}/program")
+	@GetMapping("/{article_id}/article")
 	public ResponseEntity<?> listByArticle(@PathVariable int article_id){		
 		List<Review> list = reviewService.getReviewListByArticle(article_id);
 		if(list == null || list.size() == 0)
