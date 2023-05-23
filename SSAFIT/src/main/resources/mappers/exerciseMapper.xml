@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.model.dao.ExerciseDao">
+    <!-- <resultMap type="com.ssafy.ssafit.model.dto.Exercise" id="exerciseMap">
+        <result column="viewCnt" property="viewCnt"/>
+    </resultMap> -->
+
+    <!-- 검색 기준으로 내림차순 정렬 후 조회  -->
+    <select id="bySearch" resultType="Exercise">
+        SELECT *
+        FROM exercise
+        ORDER BY exercise_search_cnt DESC;
+    </select>
+    
+    <!-- 검색 기준으로 내림차순 정렬 후 조회  -->
+    <select id="byLike" resultType="Exercise">
+        SELECT *
+        FROM exercise
+        ORDER BY exercise_like_cnt DESC;
+        <!-- LIMIT 4; -->
+    </select>
+    
+    <!------------------------------------------------------------------------------------------->
+	<!-- 운동에 대한 좋아요! -->
+	<!------------------------------------------------------------------------------------------->
+	
+	<!-- 사용자가 특정 운동에 좋아요를 했는지 Like를 가져옴 -->
+	<select id="selectLike" parameterType="Map" resultType="Like">
+		SELECT *
+		FROM lIKE
+		WHERE exercise_name = #{exercise_name}
+		AND user_id = #{user_id}
+	</select>
+	<!-- 사용자가 특정 운동에 좋아요를 누름  -->
+	<insert id="insertLike" parameterType="Map">
+		INSERT INTO like (user_id, exercise_name)
+		VALUES (#{user_id}, #{exercise_name})
+	</insert>
+	<!-- 사용자가 특정 운동에 좋아요를 취소 -->
+	<delete id="deleteLike" parameterType="Like">
+		DELETE FROM like
+		WHERE like_id = #{like_id}
+	</delete>
+	
+	<!-- 운동에 대한 좋아요 증가 -->
+	<update id="increaseLike" parameterType="String">
+		UPDATE exercise
+		SET exercise_like_cnt = exercise_like_cnt + 1
+		WHERE exercise_name = #{exercise_name}
+	</update>
+	
+	<!-- 운동에 대한 좋아요 감소 -->
+	<update id="reduceLike" parameterType="String">
+		UPDATE exercise
+		SET exercise_like_cnt = exercise_like_cnt - 1
+		WHERE exercise_name = #{exercise_name}
+	</update>
+	
+</mapper>

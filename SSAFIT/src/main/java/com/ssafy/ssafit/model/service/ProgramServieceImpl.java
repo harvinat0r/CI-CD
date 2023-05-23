@@ -61,8 +61,24 @@ public class ProgramServieceImpl implements ProgramService {
 		map.put("like_property", like_property);
 		Like result = programDao.selectLikeByUser(map);
 			
-		if(result == null) return programDao.insertLike(map);
-		else if(like_property != result.getLike_property()) return programDao.updateLike(map);
+		if(result == null) {
+			if(like_property == 1) programDao.increaseLike(program_id);
+			else programDao.increaseUnLike(program_id);
+			return programDao.insertLike(map);
+		}
+		else if(like_property != result.getLike_property()) {
+			if(like_property == 1) {
+				programDao.increaseLike(program_id);
+				programDao.reduceUnLike(program_id);
+			}
+			else {
+				programDao.reduceLike(program_id);
+				programDao.increaseUnLike(program_id);
+			}
+			return programDao.updateLike(map);
+		}
+		if(like_property == 1) programDao.reduceLike(program_id);
+		else programDao.reduceUnLike(program_id);
 		return programDao.deleteLike(result);
 	}
 }

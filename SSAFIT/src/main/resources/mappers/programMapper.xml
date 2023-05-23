@@ -98,9 +98,33 @@
 		WHERE like_id = #{like_id}
 	</delete>
 
+	<!-- 프로그램에 대한 좋아요 증가 -->
+	<update id="increaseLike" parameterType="int">
+		UPDATE program
+		SET program_like_cnt = program_like_cnt + 1
+		WHERE program_id = #{program_id}
+	</update>
+	
+	<!-- 프로그램에 대한 싫어요 증가 -->
+	<update id="increaseUnLike" parameterType="int">
+		UPDATE program
+		SET program_unlike_cnt = program_unlike_cnt + 1
+		WHERE program_id = #{program_id}
+	</update>
+	
+	<!-- 프로그램에 대한 좋아요 감소 -->
+	<update id="reduceLike" parameterType="int">
+		UPDATE program
+		SET program_like_cnt = program_like_cnt - 1
+		WHERE program_id = #{program_id}
+	</update>
 
-
-
+	<!-- 프로그램에 대한 싫어요 감소 -->
+	<update id="reduceUnLike" parameterType="int">
+		UPDATE program
+		SET program_unlike_cnt = program_unlike_cnt - 1
+		WHERE program_id = #{program_id}
+	</update>
 
 
 </mapper>

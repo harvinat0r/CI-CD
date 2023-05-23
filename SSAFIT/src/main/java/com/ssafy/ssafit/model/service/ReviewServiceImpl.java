@@ -82,23 +82,14 @@ public class ReviewServiceImpl implements ReviewService {
 		map.put("review_id", review_id);
 		Like result = reviewDao.selectLikeByuserFromReview(map);
 		
-		if(result == null) return reviewDao.insertLikeToReview(map);
+		if(result == null) {
+			reviewDao.increaseLike(review_id);
+			return reviewDao.insertLikeToReview(map);
+		}
+		
+		reviewDao.reduceLike(review_id);
 		return reviewDao.deleteLikeFromReview(result);
 		
-	}
-
-	// 프로그램에 대한 좋아요 처리
-	@Override
-	public int likeProgram(User user, int program_id, int like_property) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("user_id", user.getUser_id());
-		map.put("program_id", program_id);
-		map.put("like_property", like_property);
-		Like result = reviewDao.selectLikeByuserFromProgram(map);
-		
-		if(result == null) return reviewDao.insertLikeToProgram(map);
-		else if(like_property != result.getLike_property()) return reviewDao.updateLikeFromProgram(map);
-		return reviewDao.deleteLikeFromProgram(result);
 	}
 
 }

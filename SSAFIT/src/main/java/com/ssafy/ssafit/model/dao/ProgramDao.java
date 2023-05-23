@@ -31,4 +31,16 @@ public interface ProgramDao {
 	int updateLike(Map<String, Object> map);
 	// 특정 프로그램에 대한 유저의 좋아요 취소
 	int deleteLike(Like result);
+
+	// 좋아요 추가
+	void increaseLike(int program_id);
+
+	// 싫어요 추가
+	void increaseUnLike(int program_id);
+
+	// 좋아요 취소
+	void reduceLike(int program_id);
+	
+	// 싫어요 취소
+	void reduceUnLike(int program_id);
 }

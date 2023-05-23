@@ -34,8 +34,5 @@ public interface ReviewService {
 
 	// 리뷰에 대한 좋아요
 	public int likeReview(User user, int review_id);
-
-	// 프로그램에 대한 좋아요
-	public int likeProgram(User user, int program_id, int like_property);
 	
 }
