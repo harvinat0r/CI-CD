@@ -30,7 +30,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 	
 	@Override
 	public List<Exercise> bySearch() {
-		return exerciseDao.bysearch();
+		return exerciseDao.bySearch();
 	}
 	@Override
 	public List<Exercise> byLike() {

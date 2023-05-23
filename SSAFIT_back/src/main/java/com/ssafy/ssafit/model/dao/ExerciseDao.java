@@ -15,7 +15,7 @@ public interface ExerciseDao {
 	public void increaseSearch(String exercise_name);
 	
 	// 검색수 기준으로 내림차순 정렬 후 조회
-	public List<Exercise> bysearch();
+	public List<Exercise> bySearch();
 		
 	// 좋아요 기준으로 내림차순 정렬 후 조회
 	public List<Exercise> byLike();

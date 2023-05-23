@@ -1,6 +1,6 @@
 <template>
   <div>
-    <hero></hero>
+    <carousel-copy></carousel-copy>
     <basic-elements></basic-elements>
     <inputs></inputs>
     <custom-controls></custom-controls>
@@ -23,6 +23,7 @@ import Carousel from "./components/Carousel";
 import Icons from "./components/Icons";
 import Examples from "./components/Examples";
 import DownloadSection from "./components/DownloadSection";
+import CarouselCopy from "./components/Carousel copy.vue";
 
 export default {
   name: "components",
@@ -37,6 +38,7 @@ export default {
     Icons,
     Examples,
     DownloadSection,
+    CarouselCopy,
   },
 };
 </script>
