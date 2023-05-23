@@ -29,7 +29,7 @@
 	</select>
 	
 	<!-- 대댓글 조회 -->
-	<select id="seletByParent" parameterType="int", resultType="Review">
+	<select id="seletByParent" parameterType="int" resultType="Review">
 		SELECT *
 		FROM review
 		WHERE parent_id = #{parent_id}
