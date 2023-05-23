@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.model.dao.LikeDao">
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- 게시판에 대한 좋아요! -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- 사용자가 해당 영상을 좋아요 혹은 싫어요 했는지 조회 -->
+	<select id="selectLikeByArticle" parameterType="Map" resultType="Like">
+		SELECT *
+		FROM like
+		WHERE article_id = #{article_id}
+		AND user_id = #{user_id}
+	</select>
+	<!-- 좋아요 혹은 싫어요 입력 -->
+	<!-- 처음에 좋아요 혹은 싫어요를 한 적이 없을 때 -->
+	<insert id="insertLikeByArticle" parameterType="Map">
+		INSERT INTO like (user_id, article_id, like_property)
+		VALUES (#{user_id}, #{article_id}, #{like_property})
+	</insert>
+	<!-- 좋아요 혹은 싫어요 변경 -->
+	<update id="updateLikeByArticle" parameterType="Map">
+		UPDATE like
+		SET like_property = #{like_property}
+		WHERE article_id = #{article_id}
+		AND user_id = #{user_id}
+	</update>
+	<!-- 좋아요 혹은 싫어요 취소 -->
+	<delete id="deleteLikeByArticle" parameterType="Like">
+		DELETE FROM like
+		WHERE like_id = #{like_id}
+	</delete>
+
+	<!-- 프로그램에 대한 좋아요 증가 -->
+	<update id="increaseLike" parameterType="int">
+		UPDATE article
+		SET article_like_cnt = article_like_cnt + 1
+		WHERE article_id = #{article_id}
+	</update>
+	
+	<!-- 프로그램에 대한 싫어요 증가 -->
+	<update id="increaseUnLikeByArticle" parameterType="int">
+		UPDATE article
+		SET article_unlike_cnt = article_unlike_cnt + 1
+		WHERE article_id = #{article_id}
+	</update>
+	
+	<!-- 프로그램에 대한 좋아요 감소 -->
+	<update id="reduceLikeByArticle" parameterType="int">
+		UPDATE article
+		SET article_like_cnt = article_like_cnt - 1
+		WHERE article_id = #{article_id}
+	</update>
+
+	<!-- 프로그램에 대한 싫어요 감소 -->
+	<update id="reduceUnLikeByArticle" parameterType="int">
+		UPDATE article
+		SET article_unlike_cnt = article_unlike_cnt - 1
+		WHERE article_id = #{article_id}
+	</update>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- 운동에 대한 좋아요! -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	
+	<!-- 사용자가 특정 운동에 좋아요를 했는지 Like를 가져옴 -->
+	<select id="selectLikeByExercise" parameterType="Map" resultType="Like">
+		SELECT *
+		FROM lIKE
+		WHERE exercise_name = #{exercise_name}
+		AND user_id = #{user_id}
+	</select>
+	<!-- 사용자가 특정 운동에 좋아요를 누름  -->
+	<insert id="insertLikeByExercise" parameterType="Map">
+		INSERT INTO like (user_id, exercise_name)
+		VALUES (#{user_id}, #{exercise_name})
+	</insert>
+	<!-- 사용자가 특정 운동에 좋아요를 취소 -->
+	<delete id="deleteLikeByExercise" parameterType="Like">
+		DELETE FROM like
+		WHERE like_id = #{like_id}
+	</delete>
+	
+	<!-- 운동에 대한 좋아요 증가 -->
+	<update id="increaseLikeByExercise" parameterType="String">
+		UPDATE exercise
+		SET exercise_like_cnt = exercise_like_cnt + 1
+		WHERE exercise_name = #{exercise_name}
+	</update>
+	
+	<!-- 운동에 대한 좋아요 감소 -->
+	<update id="reduceLikeByExercise" parameterType="String">
+		UPDATE exercise
+		SET exercise_like_cnt = exercise_like_cnt - 1
+		WHERE exercise_name = #{exercise_name}
+	</update>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- 프로그램에 대한 좋아요! -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+	<!-- 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 했는지 Like를 가져옴 -->
+	<select id="selectLikeByProgram" parameterType="Map" resultType="Like">
+		SELECT *
+		FROM like
+		WHERE program_id = #{program_id}
+		AND
+		user_id = #{user_id}
+	</select>
+	<!-- 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 입력 -->
+	<!-- 처음에 좋아요 혹은 싫어요를 한 적이 없을 때 -->
+	<insert id="insertLikeByProgram" parameterType="Map">
+		INSERT INTO like
+		(user_id, program_id, like_property)
+		VALUES (#{user_id}, #{program_id},
+		#{like_property})
+	</insert>
+	<!-- 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 변경함 -->
+	<update id="updateLikeByProgram" parameterType="Map">
+		UPDATE like
+		SET
+		like_property = #{like_property}
+		WHERE program_id = #{program_id}
+		AND
+		user_id = #{user_id}
+	</update>
+	<!-- 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 취소함 -->
+	<delete id="deleteLikeByProgram" parameterType="Like">
+		DELETE FROM
+		like
+		WHERE like_id = #{like_id}
+	</delete>
+
+	<!-- 프로그램에 대한 좋아요 증가 -->
+	<update id="increaseLikeByProgram" parameterType="int">
+		UPDATE program
+		SET program_like_cnt = program_like_cnt + 1
+		WHERE program_id = #{program_id}
+	</update>
+	
+	<!-- 프로그램에 대한 싫어요 증가 -->
+	<update id="increaseUnLikeByProgram" parameterType="int">
+		UPDATE program
+		SET program_unlike_cnt = program_unlike_cnt + 1
+		WHERE program_id = #{program_id}
+	</update>
+	
+	<!-- 프로그램에 대한 좋아요 감소 -->
+	<update id="reduceLikeByProgram" parameterType="int">
+		UPDATE program
+		SET program_like_cnt = program_like_cnt - 1
+		WHERE program_id = #{program_id}
+	</update>
+
+	<!-- 프로그램에 대한 싫어요 감소 -->
+	<update id="reduceUnLikeByProgram" parameterType="int">
+		UPDATE program
+		SET program_unlike_cnt = program_unlike_cnt - 1
+		WHERE program_id = #{program_id}
+	</update>
+	
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- 댓글에 대한 좋아요! -->
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+	
+	<!-- 사용자가 특정 리뷰에 좋아요를 했는지 Like를 가져옴 -->
+	<select id="selectLikeByReview" parameterType="Map" resultType="Like">
+		SELECT *
+		FROM lIKE
+		WHERE review_id = #{review_id}
+		AND user_id = #{user_id}
+	</select>
+	<!-- 사용자가 특정 리뷰에 좋아요를 누름  -->
+	<insert id="insertLikeByReview" parameterType="Map">
+		INSERT INTO like (user_id, review_id)
+		VALUES (#{user_id}, #{review_id})
+	</insert>
+	<!-- 사용자가 특정 리뷰에 좋아요를 취소 -->
+	<delete id="deleteLikeByReview" parameterType="Like">
+		DELETE FROM like
+		WHERE like_id = #{like_id}
+	</delete>
+	
+	<!-- 리뷰에 대한 좋아요 증가 -->
+	<update id="increaseLikeByReview" parameterType="int">
+		UPDATE review
+		SET review_like_cnt = review_like_cnt + 1
+		WHERE review_id = #{review_id}
+	</update>
+	
+	<!-- 리뷰에 대한 좋아요 감소 -->
+	<update id="reduceLikeByReview" parameterType="int">
+		UPDATE review
+		SET review_like_cnt = review_like_cnt - 1
+		WHERE review_id = #{review_id}
+	</update>
+
+</mapper>

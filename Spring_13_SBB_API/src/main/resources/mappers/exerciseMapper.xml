@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.model.dao.ExerciseDao">
+
+    <!-- 검색 기준으로 내림차순 정렬 후 조회  -->
+    <select id="bySearch" resultType="Exercise">
+        SELECT *
+        FROM exercise
+        ORDER BY exercise_search_cnt DESC;
+    </select>
+    
+    <!-- 검색 기준으로 내림차순 정렬 후 조회  -->
+    <select id="byLike" resultType="Exercise">
+        SELECT *
+        FROM exercise
+        ORDER BY exercise_like_cnt DESC;
+        <!-- LIMIT 4; -->
+    </select>
+	
+</mapper>
