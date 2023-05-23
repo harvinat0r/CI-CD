@@ -13,7 +13,8 @@
 
 	<select id="selectAll" resultType="User">
 		SELECT *
-		FROM user
+		FROM user 
+		ORDER BY `squat` DESC;
 	</select>
 	
 	<!-- 입력 받은 'id' 해당하는  -->
@@ -40,14 +41,20 @@
 	</update>
 	
 	<!-- 비밀번호 찾기  -->
-	<select id="checkPassword">
+<!-- 	<select id="checkPassword">
 		SELECT COUNT(*) FROM `user` WHERE `user_id` = #{user_id} AND `user_password` = #{user_password}
-	</select>
+	</select> -->
 	
 	<!-- 회원탈퇴-->
 	<delete id="deleteUser" parameterType="">
 		DELETE FROM `user` WHERE `user_id` = #{user_id}
 	</delete>	
+	
+	<!-- id 찾기 -->
+	<select id="findId" resultType = "User">
+		SELECT * FROM `user` 
+		WHERE `user_name` = #{}
+	</select>
 	
 	
 </mapper>

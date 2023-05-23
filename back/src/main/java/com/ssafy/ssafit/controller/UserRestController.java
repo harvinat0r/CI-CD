@@ -1,6 +1,5 @@
 package com.ssafy.ssafit.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +26,11 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 
-	// 전체 유저목록 가져와~~
-	@GetMapping("/users")
-	public List<User> userList() {
-		return userService.getUserList();
-	}
+//	// 전체 유저목록 가져와~~
+//	@GetMapping("/users")
+//	public List<User> userList() {
+//		return userService.getUserList();
+//	}
 
 	// 회원가입을 해보자 (form data 형식으로 넘어왔다.)
 	// 중복유지도 확인해보자
@@ -72,9 +71,13 @@ public class UserRestController {
 	// 비밀번호 체크
 	@PostMapping("/checkPassword")
 	@ApiOperation(value = "비밀번호 체크", notes = "비밀번호 확인해봅시다")
-	public ResponseEntity<?> checkPassword(String password) {
-		int result = userService.checkPassword(password);
-		return new ResponseEntity<Integer>(result, HttpStatus.OK);
+	public ResponseEntity<?> checkPassword(User user, String input_password) {
+		User tmp = userService.checkPassword(user, input_password);
+		if (tmp == null) {
+			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+		}
+
+		return new ResponseEntity<User>(tmp, HttpStatus.OK);
 	}
 
 	// 회원정보 수정
@@ -85,28 +88,49 @@ public class UserRestController {
 		return new ResponseEntity<User>(HttpStatus.OK);
 	} // update
 
-	// 아이디 찾기
-	@PostMapping("/findId")
-	@ApiOperation(value = "아이디 찾기", notes = "아이디를 찾아봅시다")
-	public ResponseEntity<?> findId(String user_name, Date birth, String question_1, String question_2) {
-		userService.findId(user_name, birth, question_1, question_2);
-		return new ResponseEntity<User>(HttpStatus.OK);
-	}
-
-	// 비밀번호 찾기
-	@PostMapping("/findPassword")
-	@ApiOperation(value = "비밀번호 찾기", notes = "비밀번호를 찾아봅시다")
-	public ResponseEntity<?> findPassword(String user_id, String user_name, Date birth, String question_1,
-			String question_2) {
-		userService.findPassword(user_id, user_name, birth, question_1, question_2);
-		return new ResponseEntity<User>(HttpStatus.OK);
-	}
+	
 	// 프로필 조회
+	@GetMapping("/{user_id}/my-page")
+	@ApiOperation(value = "프로필 조회", notes = "프로필을 조회해보자")
+	public ResponseEntity<?> viewProfile(@RequestBody User user) {
+		userService.viewProfile(user);
+		return new ResponseEntity<User>(HttpStatus.OK);
+	} // viewProfile 
 
+	
 	// 찜 목록 조회
 
 	// 랭킹 전체 조회
-
+	@GetMapping("/ranking")
+	@ApiOperation(value = "랭킹 전체 조회", notes = "랭킹 전체 조회")
+	public ResponseEntity<?> totalRanking() {
+		List<User> list = userService.totalRanking();
+		
+		if(list == null || list.size() == 0)
+			return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+		return new ResponseEntity<List<User>>(list, HttpStatus.OK);
+	} // ranking 
+	
+	
 	// 랭킹 일부 조회
+	
+	
+	
 
-}
+	// 아이디 찾기
+//	@PostMapping("/findId")
+//	@ApiOperation(value = "아이디 찾기", notes = "아이디를 찾아봅시다")
+//	public ResponseEntity<?> findId(String user_name, Date birth, String question_1, String question_2) {
+//		userService.findId(user_name, birth, question_1, question_2);
+//		return new ResponseEntity<User>(HttpStatus.OK);
+//	}
+	
+	// 비밀번호 찾기
+//	@PostMapping("/findPassword")
+//	@ApiOperation(value = "비밀번호 찾기", notes = "비밀번호를 찾아봅시다")
+//	public ResponseEntity<?> findPassword(String user_id, String user_name, Date birth, String question_1,
+//			String question_2) {
+//		userService.findPassword(user_id, user_name, birth, question_1, question_2);
+//		return new ResponseEntity<User>(HttpStatus.OK);
+//	}
+} // class UserController 
