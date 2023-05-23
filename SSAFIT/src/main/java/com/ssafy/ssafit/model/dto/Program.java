@@ -14,6 +14,7 @@ public class Program {
 	private int program_view_cnt;
 	private int program_review_cnt;
 	private int program_like_cnt;
+	private int program_unlike_cnt;
 	private Date program_reg_date;
 	private int program_goal;
 	private String program_video_id;
@@ -22,9 +23,36 @@ public class Program {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	public Program(String user_id, String program_difficulty, String program_title, String program_content,
+			int program_goal, String program_video_id) {
+		super();
+		this.user_id = user_id;
+		this.program_difficulty = program_difficulty;
+		this.program_title = program_title;
+		this.program_content = program_content;
+		this.program_goal = program_goal;
+		this.program_video_id = program_video_id;
+	}
+
+
+
+	public Program(String user_id, String program_difficulty, String program_title, String program_content,
+			int program_goal) {
+		super();
+		this.user_id = user_id;
+		this.program_difficulty = program_difficulty;
+		this.program_title = program_title;
+		this.program_content = program_content;
+		this.program_goal = program_goal;
+	}
+
+
+
 	public Program(int program_id, String user_id, String program_difficulty, String program_title,
 			String program_content, int program_view_cnt, int program_review_cnt, int program_like_cnt,
-			Date program_reg_date, int program_goal, String program_video_id) {
+			int program_unlike_cnt, Date program_reg_date, int program_goal, String program_video_id) {
 		super();
 		this.program_id = program_id;
 		this.user_id = user_id;
@@ -34,10 +62,13 @@ public class Program {
 		this.program_view_cnt = program_view_cnt;
 		this.program_review_cnt = program_review_cnt;
 		this.program_like_cnt = program_like_cnt;
+		this.program_unlike_cnt = program_unlike_cnt;
 		this.program_reg_date = program_reg_date;
 		this.program_goal = program_goal;
 		this.program_video_id = program_video_id;
 	}
+
+
 
 	public int getProgram_id() {
 		return program_id;
@@ -127,13 +158,24 @@ public class Program {
 		this.program_video_id = program_video_id;
 	}
 
+	public int getProgram_unlike_cnt() {
+		return program_unlike_cnt;
+	}
+
+	public void setProgram_unlike_cnt(int program_unlike_cnt) {
+		this.program_unlike_cnt = program_unlike_cnt;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Program [program_id=" + program_id + ", user_id=" + user_id + ", program_difficulty="
 				+ program_difficulty + ", program_title=" + program_title + ", program_content=" + program_content
 				+ ", program_view_cnt=" + program_view_cnt + ", program_review_cnt=" + program_review_cnt
-				+ ", program_like_cnt=" + program_like_cnt + ", program_reg_date=" + program_reg_date
-				+ ", program_goal=" + program_goal + ", program_video_id=" + program_video_id + "]";
+				+ ", program_like_cnt=" + program_like_cnt + ", program_unlike_cnt=" + program_unlike_cnt
+				+ ", program_reg_date=" + program_reg_date + ", program_goal=" + program_goal + ", program_video_id="
+				+ program_video_id + "]";
 	}
 	
 	

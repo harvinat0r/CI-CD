@@ -58,5 +58,11 @@ public interface ReviewDao {
 	// 사용자가 특정 프로그램에 좋아요 혹은 싫어요를 취소함
 	public int deleteLikeFromProgram(Like result);
 
+	// 리뷰에 대한 좋아요 증가
+	public void increaseLike(int review_id);
+
+	// 리뷰에 대한 좋아요 감소
+	public void reduceLike(int review_id);
+
 	
 }
