@@ -7,12 +7,24 @@ import Landing from "./views/Landing.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
+import VideoView from '@/views/VideoView.vue';
+import VideoList from "@/components/video/VideoList.vue";
 
 Vue.use(Router);
 
 export default new Router({
   linkExactActiveClass: "active",
   routes: [
+    {
+      path : '/video',
+      name : 'video',
+      component : VideoList,
+    },
+    {
+      path:'/video/:youtubeId',
+      name: 'video',
+      component : VideoView,
+    },
     {
       path: "/",
       name: "components",

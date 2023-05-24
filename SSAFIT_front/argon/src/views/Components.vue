@@ -1,7 +1,7 @@
 <template>
   <div>
     <carousel-copy></carousel-copy>
-    <basic-elements></basic-elements>
+    <inputs-copy></inputs-copy>
     <inputs></inputs>
     <custom-controls></custom-controls>
     <navigation></navigation>
@@ -24,6 +24,7 @@ import Icons from "./components/Icons";
 import Examples from "./components/Examples";
 import DownloadSection from "./components/DownloadSection";
 import CarouselCopy from "./components/Carousel copy.vue";
+import InputsCopy from "./components/Inputs copy.vue";
 
 export default {
   name: "components",
@@ -39,6 +40,7 @@ export default {
     Examples,
     DownloadSection,
     CarouselCopy,
+    InputsCopy,
   },
 };
 </script>
