@@ -7,7 +7,7 @@ import com.ssafy.ssafit.model.dto.Article;
 public interface ArticleService {
 
 	// 속성에 맞는 게시판 가져오기
-	// 0 : 루틴연구소, 1: 자유게시판, 2: 헬스친구찾기, 3: 운동영상
+	// 0 : 루틴연구소, 1: 자유게시판, 2: 헬스친구찾기
 	List<Article> getArticleByProperty(int article_property);
 
 	// 게시판 하나 가져오기

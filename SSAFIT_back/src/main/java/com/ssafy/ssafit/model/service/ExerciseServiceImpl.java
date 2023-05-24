@@ -17,14 +17,23 @@ public class ExerciseServiceImpl implements ExerciseService {
 	public void setReviewDao(ExerciseDao exerciseDao) {
 		this.exerciseDao = exerciseDao;
 	}
+	
+	@Override
+	public List<Exercise> selectAll() {
+		return exerciseDao.selectAll();
+	}
+	
+	@Override
+	public void increaseSearch(String exercise_name) {
+		exerciseDao.increaseSearch(exercise_name);
+	}
+	
 	@Override
 	public List<Exercise> bySearch() {
-		return exerciseDao.bysearch();
+		return exerciseDao.bySearch();
 	}
 	@Override
 	public List<Exercise> byLike() {
-		// TODO Auto-generated method stub
 		return exerciseDao.byLike();
 	}
-	
 }

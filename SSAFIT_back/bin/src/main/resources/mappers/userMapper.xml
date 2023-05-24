@@ -14,7 +14,7 @@
 	<select id="selectAll" resultType="User">
 		SELECT *
 		FROM user 
-		ORDER BY `squat` DESC;
+		ORDER BY `sbd` DESC;
 	</select>
 	
 	<!-- 입력 받은 'id' 해당하는  -->
