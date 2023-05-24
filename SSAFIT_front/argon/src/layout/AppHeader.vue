@@ -118,24 +118,11 @@
           </a>
         </li>
 
-        <base-dropdown tag="li" class="nav-item">
-          <a
-            slot="title"
-            href="#"
-            class="nav-link"
-            data-toggle="dropdown"
-            role="button"
-          >
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">헬스장</span>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="#">
+            헬스장
           </a>
-          <router-link to="/landing" class="dropdown-item">Landing</router-link>
-          <router-link to="/profile" class="dropdown-item">Profile</router-link>
-          <router-link to="/login" class="dropdown-item">Login</router-link>
-          <router-link to="/register" class="dropdown-item"
-            >Register</router-link
-          >
-        </base-dropdown>
+        </li>
 
         <base-dropdown tag="li" class="nav-item">
           <a
@@ -148,14 +135,18 @@
             <i class="ni ni-collection d-lg-none"></i>
             <span class="nav-link-inner--text">회원정보</span>
           </a>
-          <router-link to="/profile" class="dropdown-item">Profile</router-link>
-          <router-link to="/login" class="dropdown-item">Login</router-link>
-          <router-link to="/register" class="dropdown-item"
+          <router-link to="/user/profile" class="dropdown-item"
+            >Profile</router-link
+          >
+          <router-link to="/user/login" class="dropdown-item"
+            >Login</router-link
+          >
+          <router-link to="/user/register" class="dropdown-item"
             >Register</router-link
           >
         </base-dropdown>
       </ul>
-      
+
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item">
           <a
