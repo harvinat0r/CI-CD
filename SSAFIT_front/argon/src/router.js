@@ -9,6 +9,9 @@ import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
 import VideoView from '@/views/VideoView.vue';
 import VideoList from "@/components/video/VideoList.vue";
+import LoginView from "./views/User/LoginView.vue";
+import ProfileView from "./views/User/ProfileView.vue";
+import RegisterView from "./views/User/RegisterView.vue";
 
 Vue.use(Router);
 
@@ -44,29 +47,30 @@ export default new Router({
       },
     },
     {
-      path: "/login",
+      path: "/user/login",
       name: "login",
       components: {
         header: AppHeader,
-        default: Login,
+        default: LoginView,
         footer: AppFooter,
       },
     },
     {
-      path: "/register",
+      path: "/user/register",
       name: "register",
       components: {
         header: AppHeader,
-        default: Register,
+        default: RegisterView,
         footer: AppFooter,
       },
     },
+
     {
-      path: "/profile",
+      path: "/user/profile",
       name: "profile",
       components: {
         header: AppHeader,
-        default: Profile,
+        default: ProfileView,
         footer: AppFooter,
       },
     },
