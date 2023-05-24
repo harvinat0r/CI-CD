@@ -49,7 +49,7 @@ public class UserRestController {
 	}
 
 	// 회원탈퇴
-	@DeleteMapping("/withdrawal")
+	@DeleteMapping("/{user_id}/withdrawal")
 	@ApiOperation(value = "회원 탈퇴", notes = "계정 삭제하고싶어요!")
 	public ResponseEntity<?> withdrawal(@RequestBody User user) {
 		userService.deleteUser(user);
