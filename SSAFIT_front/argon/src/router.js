@@ -7,7 +7,7 @@ import Landing from "./views/Landing.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
 import Profile from "./views/Profile.vue";
-import VideoView from '@/views/VideoView.vue';
+import VideoView from "@/views/VideoView.vue";
 import VideoList from "@/components/video/VideoList.vue";
 import LoginView from "./views/User/LoginView.vue";
 import ProfileView from "./views/User/ProfileView.vue";
@@ -19,14 +19,14 @@ export default new Router({
   linkExactActiveClass: "active",
   routes: [
     {
-      path : '/video',
-      name : 'video',
-      component : VideoList,
+      path: "/video",
+      name: "video",
+      component: VideoList,
     },
     {
-      path:'/video/:youtubeId',
-      name: 'video',
-      component : VideoView,
+      path: "/video/:youtubeId",
+      name: "video",
+      component: VideoView,
     },
     {
       path: "/",

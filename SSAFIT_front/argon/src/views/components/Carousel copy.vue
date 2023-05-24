@@ -17,6 +17,18 @@
             태어날때 돼지(멸치)로 태어난 것은 당신의 잘못이 아니지만 죽을때
             돼지(멸치)로 죽는 것은 당신의 잘못이다.
           </p>
+          <div class="container mb-5">
+            <!-- Inputs -->
+            <h3 class="h4 text-success font-weight-bold mb-4">Inputs</h3>
+            <fieldset class="row col-lg-12 col-sm-6">
+              <base-input
+                placeholder="운동 이름 검색. ex) 벤치프레스"
+                addon-left-icon="ni ni-zoom-split-in"
+              >
+              </base-input>
+              <base-button type="primary" @click="search">Button</base-button>
+            </fieldset>
+          </div>
           <a
             href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html"
             class="btn btn-white mt-4"
@@ -76,6 +88,9 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+  },
+  mounted() {
+    console.log(this.$store);
   },
 };
 </script>

@@ -24,29 +24,28 @@
               <div class="text-center text-muted mb-4">
                 <small>ID 로그인</small>
               </div>
-              <br role="form">
-                <base-input
-                  alternative
-                  class="mb-3"
-                  placeholder="Id"
-                  addon-left-icon="ni ni-email-83"
-                >
-                </base-input>
-                <base-input
-                  alternative
-                  type="password"
-                  placeholder="Password"
-                  addon-left-icon="ni ni-lock-circle-open"
-                >
-                </base-input>
-                <base-checkbox>
-                  Remember me
-                </base-checkbox>
-              
-                <div class="text-center">
-                  <base-button type="primary" class="my-4">로그인</base-button>
-                </div>
-              </form>
+              <br role="form" />
+              <base-input
+                alternative
+                class="mb-3"
+                placeholder="Id"
+                addon-left-icon="ni ni-email-83"
+              >
+              </base-input>
+              <base-input
+                alternative
+                type="password"
+                placeholder="Password"
+                addon-left-icon="ni ni-lock-circle-open"
+              >
+              </base-input>
+              <base-checkbox>
+                Remember me
+              </base-checkbox>
+
+              <div class="text-center">
+                <base-button type="primary" class="my-4">로그인</base-button>
+              </div>
             </template>
           </card>
           <div class="row mt-3">
@@ -56,8 +55,9 @@
               </a>
             </div>
             <div class="col-6 text-right">
-              <router-link to="/user/register" class="text-light"><small>Create new account</small></router-link>
-              
+              <router-link to="/user/register" class="text-light"
+                ><small>Create new account</small></router-link
+              >
             </div>
           </div>
         </div>
