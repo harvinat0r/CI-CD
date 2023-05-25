@@ -6,7 +6,7 @@
       </section>
     </div>
     <div id="the-top" class="ui container">
-      <h1 class="ui header center">부위별 검색</h1>
+      <h1 class="ui header center"></h1>
       <div class="ui centered stackable grid">
         <div class="row">
           <div class="nine wide column">

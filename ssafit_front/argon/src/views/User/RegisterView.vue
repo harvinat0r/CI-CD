@@ -54,9 +54,7 @@
                   </small>
                 </div>
                 <base-checkbox>
-                  <span>I agree with the
-                    <a href="#">Privacy Policy</a>
-                  </span>
+                  <span>매일 운동  <a href="#">하겠습니다</a>                  </span>
                 </base-checkbox>
                 <div class="text-center">
                   <base-button type="primary" class="my-4">계정 생성</base-button>

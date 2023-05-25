@@ -20,32 +20,32 @@
                 <div class="card-profile-image">
                   <a href="#">
                     <img
-                      v-if="loginUser.sbd <= 100"
+                      v-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 100"
                       v-lazy="'img/theme/pokemon/꼬마돌.webp'"
                       class="rounded-circle"
                     />
                     <img
-                      v-else-if="loginUser.sbd <= 200"
+                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 200"
                       v-lazy="'img/theme/pokemon/데구리.webp'"
                       class="rounded-circle"
                     />
                     <img
-                      v-else-if="loginUser.sbd <= 300"
+                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 300"
                       v-lazy="'img/theme/pokemon/딱구리.webp'"
                       class="rounded-circle"
                     />
                     <img
-                      v-else-if="loginUser.sbd <= 400"
+                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift<= 400"
                       v-lazy="'img/theme/pokemon/알통몬.webp'"
                       class="rounded-circle"
                     />
                     <img
-                      v-else-if="loginUser.sbd <= 500"
+                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift<= 500"
                       v-lazy="'img/theme/pokemon/근육몬.webp'"
                       class="rounded-circle"
                     />
                     <img
-                      v-else-if="loginUser.sbd <= 600"
+                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 600"
                       v-lazy="'img/theme/pokemon/괴력몬.webp'"
                       class="rounded-circle"
                     />
@@ -61,7 +61,7 @@
                 class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center"
               >
                 <div class="card-profile-actions py-4 mt-lg-0">
-                  <base-button type="info" size="sm" class="mr-4"
+                  <base-button type="info" size="sm" class="mr-4" v-if = "getUser"
                     >회원 정보 수정</base-button
                   >
                 </div>
@@ -119,6 +119,15 @@ export default {
   name: "ProfileView",
   computed: {
     ...mapState(["loginUser"]),
+    getUser() {
+      console.log(this.loginUser);
+      if (this.loginUser) {
+        console.log(this.loginUser);
+        return true;
+      } else {
+        return false;
+      }
+    },
   },
   created() {},
   methods: {

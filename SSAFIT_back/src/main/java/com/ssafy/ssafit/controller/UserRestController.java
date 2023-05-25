@@ -81,7 +81,7 @@ public class UserRestController {
 	}
 
 	// 회원정보 수정
-	@PutMapping("/{user_id}")
+	@PutMapping("/update")
 	@ApiOperation(value = "회원 정보 수정", notes = "회원 정보 수정!")
 	public ResponseEntity<?> modifyUser(@RequestBody User user) {
 		userService.modifyUser(user);

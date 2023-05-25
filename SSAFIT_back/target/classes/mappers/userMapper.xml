@@ -34,8 +34,7 @@
 	<!-- 회원정보 수정  -->
 	<update id="updateUser" parameterType="User">
 		UPDATE `user`
-		SET `user_password` = #{user_password}, `user_name` = #{user_name}, `user_nickname` = #{user_nickname}, 
-		`email` = #{email}, `phone_no` = #{phone_no}, 
+		SET 
 		`squat` = #{squat}, `bench_press` = #{bench_press}, `dead_lift` = #{dead_lift}
 		WHERE `user_id` = #{user_id}
 	</update>

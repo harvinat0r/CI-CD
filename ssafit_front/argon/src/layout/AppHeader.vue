@@ -96,17 +96,17 @@
         </li>
         <li class="nav-item">
           <a v-if="getUser">
-            <img v-if="loginUser.sbd <= 100" v-lazy="'img/theme/pokemon/꼬마돌.webp'"
+            <img v-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 100" v-lazy="'img/theme/pokemon/꼬마돌.webp'"
               class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 73px;" />
-            <img v-else-if="loginUser.sbd <= 200" v-lazy="'img/theme/pokemon/데구리.webp'"
+            <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 200" v-lazy="'img/theme/pokemon/데구리.webp'"
               class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 73px;" />
-            <img v-else-if="loginUser.sbd <= 300" v-lazy="'img/theme/pokemon/딱구리.webp'"
+            <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 300" v-lazy="'img/theme/pokemon/딱구리.webp'"
               class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 73px;" />
-            <img v-else-if="loginUser.sbd <= 400" v-lazy="'img/theme/pokemon/알통몬.webp'"
+            <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 400" v-lazy="'img/theme/pokemon/알통몬.webp'"
               class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 73px;" />
-            <img v-else-if="loginUser.sbd <= 500" v-lazy="'img/theme/pokemon/근육몬.webp'"
+            <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 500" v-lazy="'img/theme/pokemon/근육몬.webp'"
               class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 73px;" />
-            <img v-else-if="loginUser.sbd <= 600" v-lazy="'img/theme/pokemon/괴력몬.webp'"
+            <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 600" v-lazy="'img/theme/pokemon/괴력몬.webp'"
               class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 73px;" />
             <img v-else v-lazy="'img/theme/pokemon/피카츄.webp'"
               class="rounded-circle img-center img-fluid shadow shadow-lg--hover" style="width: 73px;" />
