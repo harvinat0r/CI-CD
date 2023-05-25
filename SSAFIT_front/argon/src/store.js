@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
 import router from "./router.js";
+import videos from "./store/modules/videos.js";
 
 Vue.use(Vuex);
 
@@ -27,7 +28,7 @@ export default new Vuex.Store({
     },
   },
   mutations: {
-    SET_ARTICLE_REVIEWS: function (state, reviews) {
+    SET_ARTICLE_REVIEWS: function(state, reviews) {
       state.reviews = reviews;
     },
     SET_EXERCISES: function(state, exercises) {
@@ -130,7 +131,7 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setExercises: function ({ commit }) {
+    setExercises: function({ commit }) {
       const API_URL = `${REST_API}/exercise/bySearch`;
       axios({
         url: API_URL,
@@ -377,5 +378,7 @@ export default new Vuex.Store({
         });
     },
   },
-  modules: {},
+  modules: {
+    videos,
+  },
 });
