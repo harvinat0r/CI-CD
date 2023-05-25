@@ -20,7 +20,38 @@
                 <div class="card-profile-image">
                   <a href="#">
                     <img
+                      v-if="loginUser.sbd <= 100"
+                      v-lazy="'img/theme/pokemon/꼬마돌.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 200"
+                      v-lazy="'img/theme/pokemon/데구리.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 300"
+                      v-lazy="'img/theme/pokemon/딱구리.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 400"
                       v-lazy="'img/theme/pokemon/알통몬.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 500"
+                      v-lazy="'img/theme/pokemon/근육몬.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 600"
+                      v-lazy="'img/theme/pokemon/괴력몬.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else
+                      v-lazy="'img/theme/pokemon/피카츄.webp'"
                       class="rounded-circle"
                     />
                   </a>
@@ -31,10 +62,7 @@
               >
                 <div class="card-profile-actions py-4 mt-lg-0">
                   <base-button type="info" size="sm" class="mr-4"
-                    >Connect</base-button
-                  >
-                  <base-button type="default" size="sm" class="float-right"
-                    >Message</base-button
+                    >회원 정보 수정</base-button
                   >
                 </div>
               </div>
@@ -64,22 +92,18 @@
                 <i class="ni location_pin mr-2" v-if="loginUser.gender">남</i>
                 <i class="ni location_pin mr-2" v-else>여</i>
               </div>
-              <div class="h6 mt-4">
-                <i class="ni business_briefcase-24 mr-2"></i>Solution Manager -
-                Creative Tim Officer
+              <!-- <div class="h6 mt-4">
+                <i class="ni business_briefcase-24 mr-2"></i>3분할
               </div>
-              <div>
-                <i class="ni education_hat mr-2"></i>University of Computer
-                Science
-              </div>
+              <div><i class="ni education_hat mr-2"></i>가슴 등 어깨</div> -->
             </div>
             <div class="mt-5 py-5 border-top text-center">
               <div class="row justify-content-center">
                 <div class="col-lg-9">
                   <p>
-                    내가 여기 관장이다 깝치지마라
+                    운동하기 좋은 날입니다
                   </p>
-                  <a href="#">Show more</a>
+                  <a href="http://localhost:8080">메인 페이지</a>
                 </div>
               </div>
             </div>
@@ -100,6 +124,11 @@ export default {
   methods: {
     updateUser() {
       this.$router.push({ name: "updateUser" });
+    },
+    age() {
+      let birth_year = new Date(this.loginUser.birth);
+      let year = birth_year.getFullYear();
+      let age = 2023 - year + 1;
     },
   },
 };

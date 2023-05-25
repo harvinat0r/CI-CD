@@ -70,7 +70,9 @@
           </div>
         </base-dropdown>
         <li class="nav-item">
-          <router-link :to="{ name: 'search' }" class="nav-item"
+          <router-link
+            :to="{ name: 'search' }"
+            class="nav-item nav-link-icon white_word"
             >부위별</router-link
           >
         </li>
@@ -136,31 +138,22 @@
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-lg-auto">
         <li class="nav-item">
           <a
-            class="nav-link nav-link-icon"
-            href="https://www.instagram.com/creativetimofficial"
-            target="_blank"
-            rel="noopener"
-            data-toggle="tooltip"
-            title="Follow us on Instagram"
-          >
-            <i class="fa fa-instagram"></i>
-            <span class="nav-link-inner--text d-lg-none">Instagram</span>
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a
-            class="nav-item"
+            class="nav-item white_word"
             href="http://localhost:8080"
             v-if="getUser"
             @click="logout"
             >로그아웃</a
           >
 
-          <router-link :to="{ name: 'profile' }" class="nav-item" v-if="getUser"
+          <router-link
+            :to="{ name: 'profile' }"
+            class="nav-item white_word"
+            v-if="getUser"
             >마이페이지</router-link
           >
-          <router-link to="/user/login" v-else>로그인</router-link>
+          <router-link to="/user/login" v-else class="white_word"
+            >로그인</router-link
+          >
         </li>
       </ul>
     </base-nav>
@@ -197,4 +190,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+.white_word {
+  color: white;
+}
+</style>

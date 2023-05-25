@@ -22,7 +22,7 @@
           >
             <template>
               <div class="text-muted text-center mb-3">
-                <small>Sign in with</small>
+                <small>회원가입</small>
               </div>
               <div class="btn-wrapper text-center">
                 <base-button type="neutral">
@@ -64,8 +64,8 @@
                 </base-input>
                 <div class="text-muted font-italic">
                   <small
-                    >password strength:
-                    <span class="text-success font-weight-700">strong</span>
+                    >당신의 근육:
+                    <span class="text-success font-weight-700">부족해</span>
                   </small>
                 </div>
                 <base-checkbox>
@@ -76,7 +76,7 @@
                 </base-checkbox>
                 <div class="text-center">
                   <base-button type="primary" class="my-4"
-                    >Create account</base-button
+                    >계정 생성</base-button
                   >
                 </div>
               </form>
