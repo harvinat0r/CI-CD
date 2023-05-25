@@ -1,7 +1,5 @@
 package com.ssafy.ssafit.model.dto;
 
-import java.util.Date;
-
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(value="운동 루틴 바구니", description = "루틴 정보임")
@@ -11,14 +9,14 @@ public class Routine {
 	private String exercise_name;
 	private int repetition;
 	private int set;
-	private Date routine_reg_date;
+	private String routine_reg_date;
 	
 	public Routine() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Routine(int routine_id, String user_id, String exercise_name, int repetition, int set,
-			Date routine_reg_date) {
+			String routine_reg_date) {
 		super();
 		this.routine_id = routine_id;
 		this.user_id = user_id;
@@ -68,11 +66,11 @@ public class Routine {
 		this.set = set;
 	}
 
-	public Date getRoutine_reg_date() {
+	public String getRoutine_reg_date() {
 		return routine_reg_date;
 	}
 
-	public void setRoutine_reg_date(Date routine_reg_date) {
+	public void setRoutine_reg_date(String routine_reg_date) {
 		this.routine_reg_date = routine_reg_date;
 	}
 

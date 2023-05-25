@@ -43,7 +43,7 @@ public class ReviewRestController {
 	
 	// 대댓글 가져와. 날짜 기준 내림차순
 	@ApiOperation(value="대댓글", notes = "댓글에 대한 댓글들 가져와")
-	@GetMapping("/{review_id}/parent")
+	@GetMapping("/parent/{review_id}")
 	public ResponseEntity<?> listByParent(@PathVariable int parent_id){		
 		List<Review> list = reviewService.getReviewListByParent	(parent_id);
 		if(list == null || list.size() == 0)
@@ -53,7 +53,7 @@ public class ReviewRestController {
 	
 	// 프로그램 댓글 가져와. 날짜 기준 내림차순
 	@ApiOperation(value="프로그램 댓글", notes = "프로그램에 대한 댓글들 가져와")
-	@GetMapping("/{program_id}/program")
+	@GetMapping("/program/{program_id}")
 	public ResponseEntity<?> listByProgram(@PathVariable int program_id){		
 		List<Review> list = reviewService.getReviewListByProgram(program_id);
 		if(list == null || list.size() == 0)
@@ -85,9 +85,9 @@ public class ReviewRestController {
 	// 삭제
 	// 로그인 여부에 대한 확인이 없음 => ★뷰에서 로그인했을 때만 삭제 버튼을 보이게 구현 필요★
 	@ApiOperation(value="리뷰 삭제", notes = "리뷰를 삭제하자")
-	@DeleteMapping("/{user_id}/delete")
-	public ResponseEntity<?> delete(@PathVariable int id){
-		int result = reviewService.removeReview(id);
+	@DeleteMapping("/delete/{review_id}")
+	public ResponseEntity<?> delete(@PathVariable int review_id){
+		int result = reviewService.removeReview(review_id);
 		
 		if(result == 0) return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
 		else return new ResponseEntity<Integer>(result, HttpStatus.OK);

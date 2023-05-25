@@ -1,7 +1,5 @@
 package com.ssafy.ssafit.model.dto;
 
-import java.util.Date;
-
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(value="운동 프로그램 바구니", description = "프로그램 정보임")
@@ -15,7 +13,7 @@ public class Program {
 	private int program_review_cnt;
 	private int program_like_cnt;
 	private int program_unlike_cnt;
-	private Date program_reg_date;
+	private String program_reg_date;
 	private int program_goal;
 	private String program_video_id;
 	
@@ -52,7 +50,7 @@ public class Program {
 
 	public Program(int program_id, String user_id, String program_difficulty, String program_title,
 			String program_content, int program_view_cnt, int program_review_cnt, int program_like_cnt,
-			int program_unlike_cnt, Date program_reg_date, int program_goal, String program_video_id) {
+			int program_unlike_cnt, String program_reg_date, int program_goal, String program_video_id) {
 		super();
 		this.program_id = program_id;
 		this.user_id = user_id;
@@ -134,11 +132,11 @@ public class Program {
 		this.program_like_cnt = program_like_cnt;
 	}
 
-	public Date getProgram_reg_date() {
+	public String getProgram_reg_date() {
 		return program_reg_date;
 	}
 
-	public void setProgram_reg_date(Date program_reg_date) {
+	public void setProgram_reg_date(String program_reg_date) {
 		this.program_reg_date = program_reg_date;
 	}
 

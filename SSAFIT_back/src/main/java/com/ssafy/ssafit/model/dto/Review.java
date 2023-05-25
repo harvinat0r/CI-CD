@@ -1,8 +1,6 @@
 package com.ssafy.ssafit.model.dto;
 
 
-import java.util.Date;
-
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(value="리뷰 바구니", description = "리뷰 정보임")
@@ -15,14 +13,14 @@ public class Review {
     private String review_content;
     private int review_like_cnt;
     private int depth;
-    private Date review_reg_date;
+    private String review_reg_date;
     
     public Review() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Review(int review_id, String user_id, int program_id, int parent_id, int article_id, String review_content,
-			int review_like_cnt, int depth, Date review_reg_date) {
+			int review_like_cnt, int depth, String review_reg_date) {
 		super();
 		this.review_id = review_id;
 		this.user_id = user_id;
@@ -99,11 +97,11 @@ public class Review {
 		this.depth = depth;
 	}
 
-	public Date getReview_reg_date() {
+	public String getReview_reg_date() {
 		return review_reg_date;
 	}
 
-	public void setReview_reg_date(Date review_reg_date) {
+	public void setReview_reg_date(String review_reg_date) {
 		this.review_reg_date = review_reg_date;
 	}
 

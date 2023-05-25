@@ -14,7 +14,7 @@
                   <tab-pane title="댓글">
                       <div class="description" v-for="(review, index) in reviews" :key="index">
                         <div>
-                          {{index + 1}}번 댓글 :  {{ review.review_content }}
+                          {{index}}번 댓글 :  {{ review.review_content }}
                         </div>
                         <div v-if="`${loginUser}` === `${review.user_id}`">
                           <base-button block type="warning" class=" mb-3" @click="deleteReviewModal(review)">삭제
@@ -154,7 +154,7 @@ export default {
       this.modals.modal2 = true;
     },
     updateReview() {
-      this.updateTarget.review_content = this.updateContent;
+      this.updateTarget.review_content = updateContent;
       this.$store.dispatch("updateReview", this.updateTarget);
       this.modals.modal1 = false;
     },
