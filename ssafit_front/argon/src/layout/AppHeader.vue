@@ -70,9 +70,9 @@
           </div>
         </base-dropdown>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="#">
-            부위별
-          </a>
+          <router-link :to="{ name: 'search' }" class="nav-item"
+            >부위별</router-link
+          >
         </li>
 
         <base-dropdown tag="li" class="nav-item">

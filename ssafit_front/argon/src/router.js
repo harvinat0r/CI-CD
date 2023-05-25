@@ -20,6 +20,9 @@ import ArticleRoutineResearch from "@/components/article/RoutineResearch.vue";
 import ArticleDetail from "@/components/article/ArticleDetail.vue";
 import ArticleFindFriends from "@/components/article/FindFriends.vue";
 
+// 유튜브
+import YoutubeSearch from "./views/YoutubeSearch.vue";
+
 Vue.use(Router);
 
 export default new Router({
@@ -54,7 +57,11 @@ export default new Router({
         },
       ],
     },
-
+    {
+      path: "/search",
+      name: "search",
+      component: YoutubeSearch,
+    },
     {
       path: "/test",
       name: "Test",
