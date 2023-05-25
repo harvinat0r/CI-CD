@@ -10,6 +10,8 @@
 		SELECT *
 		FROM article
 		WHERE article_property = #{article_property}
+		ORDER BY article_reg_date DESC
+        <!-- LIMIT 10 -->
 	</select>
 
 	<!-- 게시판 하나 조회 -->
