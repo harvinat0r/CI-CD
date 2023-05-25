@@ -1,28 +1,11 @@
 <template>
     <footer class="footer has-cards">
-        <div class="container container-lg">
-            <div class="row">
-                <div class="col-md-6 mb-5 mb-md-0">
-                    <div class="card card-lift--hover shadow border-0">
-                        <router-link to="/landing" title="Landing Page">
-                            <img v-lazy="'img/theme/landing.jpg'" class="card-img">
-                        </router-link>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-5 mb-lg-0">
-                    <div class="card card-lift--hover shadow border-0">
-                        <router-link to="/profile" title="Profile Page">
-                            <img v-lazy="'img/theme/profile.jpg'" class="card-img">
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
         <div class="container">
             <div class="row row-grid align-items-center my-md">
                 <div class="col-lg-6">
-                    <h3 class="text-primary font-weight-light mb-2">Thank you for supporting us!</h3>
-                    <h4 class="mb-0 font-weight-light">Let's get in touch on any of these platforms.</h4>
+                    <h3 class="text-primary font-weight-light mb-2">오늘 쉬면 내일 뛰어야됩니다</h3>
+                    <h4 class="mb-0 font-weight-light">일어나세요</h4>
                 </div>
                 <div class="col-lg-6 text-lg-center btn-wrapper">
                     <a target="_blank" rel="noopener" href="https://twitter.com/creativetim"
@@ -51,14 +34,14 @@
             <div class="row align-items-center justify-content-md-between">
                 <div class="col-md-6">
                     <div class="copyright">
-                        &copy; {{year}}
-                        <a href="https://www.creative-tim.com" target="_blank" rel="noopener">Creative Tim</a> & <a href="https://www.binarcode.com" target="_blank" rel="noopener">Binar Code</a>
+                        &copy; {{year}} 
+                        <a href="https://www.creative-tim.com" target="_blank" rel="noopener">인범</a> & <a href="https://www.binarcode.com" target="_blank" rel="noopener">형석    </a>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <ul class="nav nav-footer justify-content-end">
                         <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank" rel="noopener">Creative Tim</a>
+                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank" rel="noopener">인형의 꿈</a>
                         </li>
                         <li class="nav-item">
                             <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank" rel="noopener">About

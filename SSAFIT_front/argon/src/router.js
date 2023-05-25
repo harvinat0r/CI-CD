@@ -12,12 +12,48 @@ import VideoList from "@/components/video/VideoList.vue";
 import LoginView from "./views/User/LoginView.vue";
 import ProfileView from "./views/User/ProfileView.vue";
 import RegisterView from "./views/User/RegisterView.vue";
+// 게시판(자유, 루틴연구소, 헬스친구찾기)
+import ArticleView from "@/views/Article.vue";
+import ArticleFree from "@/components/article/Free.vue";
+import ArticleRoutineResearch from "@/components/article/RoutineResearch.vue";
+import ArticleDetail from "@/components/article/ArticleDetail.vue";
+import ArticleFindFriends from "@/components/article/FindFriends.vue";
 
 Vue.use(Router);
 
 export default new Router({
   linkExactActiveClass: "active",
   routes: [
+    // 게시판(자유, 루틴연구소, 헬스친구찾기)
+    {
+      path: "/article",
+      name: "Article",
+      component: ArticleView,
+      children: [
+        // 스프링에서 article_property 확인 필수
+        {
+          path: "",
+          name: "ArticleFree",
+          component: ArticleFree,
+        },
+        {
+          path: "routineResearch",
+          name: "ArticleRoutineResearch",
+          component: ArticleRoutineResearch,
+        },
+        {
+          path: "findFriends",
+          name: "ArticleFindFriends",
+          component: ArticleFindFriends,
+        },
+        {
+          path: "detail/:article_id",
+          name: "ArticleDetail",
+          component: ArticleDetail,
+        },
+      ],
+    },
+
     {
       path: "/video",
       name: "video",

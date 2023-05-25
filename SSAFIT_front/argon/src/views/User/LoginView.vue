@@ -22,7 +22,7 @@
           >
             <template>
               <div class="text-center text-muted mb-4">
-                <small>ID 로그인</small>
+                <small>Login</small>
               </div>
               <br role="form" />
               <base-input
@@ -30,6 +30,8 @@
                 class="mb-3"
                 placeholder="Id"
                 addon-left-icon="ni ni-email-83"
+                id = "id"
+                v-model = "id"
               >
               </base-input>
               <base-input
@@ -37,6 +39,8 @@
                 type="password"
                 placeholder="Password"
                 addon-left-icon="ni ni-lock-circle-open"
+                id = "password"
+                v-model = "password"
               >
               </base-input>
               <base-checkbox>
@@ -44,7 +48,7 @@
               </base-checkbox>
 
               <div class="text-center">
-                <base-button type="primary" class="my-4">로그인</base-button>
+                <base-button type="primary" class="my-4" @click = "login">로그인</base-button>
               </div>
             </template>
           </card>
@@ -66,6 +70,32 @@
   </section>
 </template>
 <script>
-export default {};
+export default {
+  name: "LoginForm",
+    data() {
+      return {
+        id: "",
+        password: "",
+      };
+    },
+    methods: {
+      login() {
+        if (
+          this.id.trim() === "" ||
+          this.password.trim() === ""
+         ) {
+          alert("아이디와 비밀번호를 모두 입력해주세요");
+          return;
+        }
+
+        let user = {
+          id: this.id,
+          password: this.password,
+        };
+  
+        this.$store.dispatch("setLoginUser", user);
+      },
+    },
+};
 </script>
 <style></style>

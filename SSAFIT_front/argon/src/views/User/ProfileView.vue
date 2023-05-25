@@ -19,23 +19,14 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img
-                      v-lazy="'img/theme/pokemon/알통몬.webp'"
-                      class="rounded-circle"
-                    />
+                    <img v-lazy="'img/theme/pokemon/알통몬.webp'" class="rounded-circle" />
                   </a>
                 </div>
               </div>
-              <div
-                class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center"
-              >
+              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                 <div class="card-profile-actions py-4 mt-lg-0">
-                  <base-button type="info" size="sm" class="mr-4"
-                    >Connect</base-button
-                  >
-                  <base-button type="default" size="sm" class="float-right"
-                    >Message</base-button
-                  >
+                  <base-button type="info" size="sm" class="mr-4">Connect</base-button>
+                  <base-button type="default" size="sm" class="float-right">Message</base-button>
                 </div>
               </div>
               <div class="col-lg-4 order-lg-1">
@@ -89,6 +80,23 @@
   </div>
 </template>
 <script>
-export default {};
+import { mapState } from "vuex";
+export default {
+  name : 'ProfileView',
+  computed : {
+    ...mapState(["loginUser"]),
+  },
+  created(){
+    const pathName = new URL(document.location).pathname.split('/');
+    const user_id = pathName[pathName.length - 2];
+    this.$store.dispatch('setUser', user_id);
+  },
+  methods:{
+    updateUser(){
+      this.$router.push({name:'updateUser'})
+    },
+    
+  },
+};
 </script>
 <style></style>

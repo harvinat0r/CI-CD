@@ -101,13 +101,17 @@
             <i class="ni ni-collection d-lg-none"></i>
             <span class="nav-link-inner--text">커뮤니티</span>
           </a>
-          <router-link to="/landing" class="dropdown-item"
+          <router-link
+            :to="{ name: 'ArticleRoutineResearch' }"
+            class="dropdown-item"
             >루틴연구소</router-link
           >
-          <router-link to="/profile" class="dropdown-item"
+          <router-link :to="{ name: 'ArticleFree' }" class="dropdown-item"
             >자유게시판</router-link
           >
-          <router-link to="/login" class="dropdown-item"
+          <router-link
+            :to="{ name: 'ArticleFindFriends' }"
+            class="dropdown-item"
             >헬스친구찾기</router-link
           >
         </base-dropdown>
