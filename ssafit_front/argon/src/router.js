@@ -66,7 +66,7 @@ export default new Router({
     },
 
     {
-      path: "/user/profile",
+      path: "/user/:id/my-page",
       name: "profile",
       components: {
         header: AppHeader,

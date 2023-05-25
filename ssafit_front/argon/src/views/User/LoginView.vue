@@ -92,7 +92,8 @@ export default {
           id: this.id,
           password: this.password,
         };
-  
+        console.log(user.id);
+        console.log(user.password);
         this.$store.dispatch("setLoginUser", user);
       },
     },

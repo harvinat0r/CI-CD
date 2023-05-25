@@ -32,15 +32,15 @@
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
-                    <span class="heading">200</span>
+                    <span class="heading">{{user.id}}</span>
                     <span class="description">Squat</span>
                   </div>
                   <div>
-                    <span class="heading">150</span>
+                    <span class="heading">{{user.bench_press}}</span>
                     <span class="description">Bench-Press</span>
                   </div>
                   <div>
-                    <span class="heading">150</span>
+                    <span class="heading">{{user.dead_lift}}</span>
                     <span class="description">Dead-lift</span>
                   </div>
                 </div>

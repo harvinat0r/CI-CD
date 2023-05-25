@@ -161,17 +161,26 @@ export default new Vuex.Store({
     },
     setLoginUser: function ({ commit }, user) {
       const API_URL = `${REST_API}/user/login`;
+      console.log("여기까진돼?");
+      console.log(user.id);
       axios({
         url: API_URL,
         method: "POST",
+        params: user,
       })
         .then((res) => {
+          // res.data하면 db자료가 가져와지네
           let resUser = res.data;
-          if (resUser.id === user.id && resUser.password === user.password) {
+          if (resUser.user_id === user.id && resUser.user_password === user.password) {
             alert("로그인 성공!");
             commit("SET_LOGIN_USER", res.data);
             router.push("/");
           } else {
+            console.log(resUser.id);
+            console.log(resUser.password);
+            console.log(res);
+            console.log(res.data.user_id);
+            
             alert("로그인 실패");
           }
         })
