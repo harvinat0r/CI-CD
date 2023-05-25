@@ -19,7 +19,7 @@
           </p>
           <div class="container mb-5">
             <!-- Inputs -->
-            <h3 class="h4 text-success font-weight-bold mb-4">Inputs</h3>
+           
             <fieldset class="row col-lg-12 col-sm-6">
               <base-input
                 placeholder="운동 이름 검색. ex) 벤치프레스"

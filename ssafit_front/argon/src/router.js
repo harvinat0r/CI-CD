@@ -20,6 +20,7 @@ import ArticleRoutineResearch from "@/components/article/RoutineResearch.vue";
 import ArticleDetail from "@/components/article/ArticleDetail.vue";
 import ArticleFindFriends from "@/components/article/FindFriends.vue";
 
+import TotalRanking from "./views/Ranking/TotalRanking.vue";
 // 유튜브
 import YoutubeSearch from "./views/YoutubeSearch.vue";
 
@@ -58,9 +59,22 @@ export default new Router({
       ],
     },
     {
+      path: "/ranking",
+      name: "ranking",
+      components: {
+        header: AppHeader,
+        default: TotalRanking,
+        footer: AppFooter,
+      },
+    },
+    {
       path: "/search",
       name: "search",
-      component: YoutubeSearch,
+      components: {
+        // header: AppHeader,
+        default: YoutubeSearch,
+        // footer: AppFooter,
+      },
     },
     {
       path: "/test",

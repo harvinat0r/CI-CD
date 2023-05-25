@@ -235,7 +235,7 @@ export default new Vuex.Store({
         });
     },
     setUsers: function({ commit }) {
-      const API_URL = `${REST_API}/user/ranking`;
+      const API_URL = `${REST_API}/ranking`;
       return axios({
         url: API_URL,
         method: "GET",
