@@ -53,14 +53,14 @@
           <router-link :to="{ name: 'search' }" class="nav-item nav-link-icon white_word">부위별</router-link>
         </li>
 
-        <base-dropdown tag="li" class="nav-item">
+        <!-- <base-dropdown tag="li" class="nav-item">
           <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">
             <i class="ni ni-collection d-lg-none"></i>
             <span class="nav-link-inner--text">프로그램</span>
           </a>
           <router-link to="/landing" class="dropdown-item">파워리프팅</router-link>
           <router-link to="/profile" class="dropdown-item">보디빌딩</router-link>
-        </base-dropdown>
+        </base-dropdown> -->
 
         <base-dropdown tag="li" class="nav-item">
           <a slot="title" href="#" class="nav-link" data-toggle="dropdown" role="button">

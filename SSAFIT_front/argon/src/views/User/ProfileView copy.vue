@@ -19,8 +19,38 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    
                     <img
+                      v-if="loginUser.sbd <= 100"
+                      v-lazy="'img/theme/pokemon/꼬마돌.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 200"
+                      v-lazy="'img/theme/pokemon/데구리.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 300"
+                      v-lazy="'img/theme/pokemon/딱구리.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 400"
+                      v-lazy="'img/theme/pokemon/알통몬.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 500"
+                      v-lazy="'img/theme/pokemon/근육몬.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else-if="loginUser.sbd <= 600"
+                      v-lazy="'img/theme/pokemon/괴력몬.webp'"
+                      class="rounded-circle"
+                    />
+                    <img
+                      v-else
                       v-lazy="'img/theme/pokemon/피카츄.webp'"
                       class="rounded-circle"
                     />
@@ -39,15 +69,15 @@
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
                   <div>
-                    <span class="heading">200</span>
+                    <span class="heading">{{ loginUser.squat }}</span>
                     <span class="description">Squat</span>
                   </div>
                   <div>
-                    <span class="heading">200</span>
+                    <span class="heading">{{ loginUser.bench_press }}</span>
                     <span class="description">Bench-Press</span>
                   </div>
                   <div>
-                    <span class="heading">200</span>
+                    <span class="heading">{{ loginUser.dead_lift }}</span>
                     <span class="description">Dead-lift</span>
                   </div>
                 </div>
@@ -55,41 +85,17 @@
             </div>
             <div class="text-center mt-5">
               <h3>
-                세상이 밉다
-                <span class="font-weight-light">, 1997-02-10 </span>
+                {{ loginUser.user_nickname }}
+                <span class="font-weight-light">, {{ loginUser.birth }}</span>
               </h3>
               <div class="h6 font-weight-300">
-                <i class="ni location_pin mr-2" >남</i>
+                <i class="ni location_pin mr-2" v-if="loginUser.gender">남</i>
+                <i class="ni location_pin mr-2" v-else>여</i>
               </div>
-              <div class="h6 mt-4">
-                <i class="ni business_briefcase-24 mr-2"></i>커리어
+              <!-- <div class="h6 mt-4">
+                <i class="ni business_briefcase-24 mr-2"></i>3분할
               </div>
-              <div><i class="ni education_hat mr-2"></i>2014 세계남자클래식보디빌딩선수권대회 -168cm급 1위
- </div>
-              <div><i class="ni education_hat mr-2"></i>2015 전국체육대회 일반 -65kg급 1위
- </div>
-
-              <div><i class="ni education_hat mr-2"></i>2015 세계남자클래식보디빌딩선수권대회 -168cm급 1위
- </div>
-
-              <div><i class="ni education_hat mr-2"></i>2016 세계남자클래식보디빌딩선수권대회 클래식 보디빌딩 -168cm급 1위
- </div>
-
-              <div><i class="ni education_hat mr-2"></i>2016 Mr.YMCA 선발대회 일반 -70kg급 1위
- </div>
-
-              <div><i class="ni education_hat mr-2"></i>2018 세계남자클래식보디빌딩선수권대회 클래식 보디빌딩 -168cm급 1위 
- </div>
-
-              <div><i class="ni education_hat mr-2"></i>2019 제 71회 Mr.Korea 선발대회 보디빌딩 일반-70kg급 1위
- </div>
-
-              <div><i class="ni education_hat mr-2"></i>2019 제100회 전국체육대회 -70kg급 1위
-</div>
-
-              <div><i class="ni education_hat mr-2"></i>2020 제 72회 Mr.Korea 선발대회 보디빌딩 일반-75kg급 1위
-</div>
-
+              <div><i class="ni education_hat mr-2"></i>가슴 등 어깨</div> -->
             </div>
             <div class="mt-5 py-5 border-top text-center">
               <div class="row justify-content-center">
@@ -110,7 +116,7 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "Inbeom",
+  name: "ProfileView",
   computed: {
     ...mapState(["loginUser"]),
   },
