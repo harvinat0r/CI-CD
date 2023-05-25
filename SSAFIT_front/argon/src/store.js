@@ -79,6 +79,43 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    updateReview: function ({}, review) {
+      const API_URL = `${REST_API}/review/update`;
+      axios({
+        url: API_URL,
+        method: "PUT",
+        data: review,
+      })
+        .then((res) => {
+          console.log(res.data);
+          alert("수정 완료!");
+        })
+        .catch((err) => {
+          console.log(err);
+          console.log("세상이 밉다...");
+        });
+    },
+    deleteReview: function ({ state }, review_id) {
+      const API_URL = `${REST_API}/review/delete/${review_id}`;
+      axios({
+        url: API_URL,
+        method: "DELETE",
+      })
+        .then((res) => {
+          console.log(res.data);
+          alert("삭제 완료!");
+          let index;
+          for (let i = 0; i < state.reviews.length; i++) {
+            if (state.reviews[i].review_id === review_id) {
+              index = i;
+            }
+          }
+          state.reviews.splice(index, 1);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     setArticleReviews: function ({ commit }, article_id) {
       const API_URL = `${REST_API}/review/article/${article_id}`;
       axios({
@@ -303,22 +340,6 @@ export default new Vuex.Store({
         .get(`/review/review/${reviewNum}`)
         .then((res) => {
           commit("GET_REVIEW", res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
-    updateReview({ commit }, review) {
-      console.log(review);
-      const API_URL = `${REST_API}/review/review`;
-      axios({
-        url: API_URL,
-        method: "PUT",
-        params: review,
-      })
-        .then(() => {
-          commit("UPDATE_REVIEW", review);
-          router.push(`../reviewdetail/${review.reviewNum}`);
         })
         .catch((err) => {
           console.log(err);
