@@ -9,6 +9,7 @@ const REST_API = `http://localhost:9999`;
 
 export default new Vuex.Store({
   state: {
+    reviews: [],
     exercises: [],
     articles: [],
     article: {},
@@ -26,6 +27,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    SET_ARTICLE_REVIEWS: function (state, reviews) {
+      state.reviews = reviews;
+    },
     SET_EXERCISES: function(state, exercises) {
       state.exercises = exercises;
     },
@@ -75,7 +79,21 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    setExercises: function({ commit }) {
+    setArticleReviews: function ({ commit }, article_id) {
+      const API_URL = `${REST_API}/review/article/${article_id}`;
+      axios({
+        url: API_URL,
+        method: "GET",
+      })
+        .then((res) => {
+          console.log(res.data);
+          commit("SET_ARTICLE_REVIEWS", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    setExercises: function ({ commit }) {
       const API_URL = `${REST_API}/exercise/bySearch`;
       axios({
         url: API_URL,

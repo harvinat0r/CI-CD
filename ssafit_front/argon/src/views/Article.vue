@@ -32,6 +32,18 @@ label {
   width: 130px;
 }
 
+/* .btn {
+  width: 8%;
+  background-color: #d0d3d0;
+  color: rgb(80, 82, 79);
+  padding: 14px 20px;
+  margin: 8px;
+  border: 1px solid #787878;
+  border-radius: 4px;
+  font-size: large;
+  cursor: pointer;
+} */
+
 /* 테이블 CSS */
 .article-list {
   border-collapse: collapse;
