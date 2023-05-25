@@ -75,11 +75,12 @@ public class ReviewRestController {
 	// 로그인 여부에 대한 확인이 없음 => ★뷰에서 로그인했을 때만 등록 버튼을 보이게 구현 필요★
 	@ApiOperation(value="리뷰 등록", notes = "리뷰 등록하자")
 	@PostMapping("/write")
-	public ResponseEntity<?> write(@RequestBody Review review){
+	public ResponseEntity<?> write(Review review){
+		System.out.println(review);
 		int result = reviewService.writeReview(review);
 		
 		if(result == 0) return new ResponseEntity<Void>(HttpStatus.NOT_FOUND);
-		else return new ResponseEntity<Review>(review, HttpStatus.CREATED);
+		else return new ResponseEntity<Integer>(result, HttpStatus.CREATED);
 	}
 	
 	// 삭제

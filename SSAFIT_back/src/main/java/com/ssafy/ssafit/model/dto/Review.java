@@ -1,6 +1,8 @@
 package com.ssafy.ssafit.model.dto;
 
 
+import java.time.LocalDateTime;
+
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(value="리뷰 바구니", description = "리뷰 정보임")
@@ -13,14 +15,14 @@ public class Review {
     private String review_content;
     private int review_like_cnt;
     private int depth;
-    private String review_reg_date;
+    private LocalDateTime review_reg_date;
     
     public Review() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Review(int review_id, String user_id, int program_id, int parent_id, int article_id, String review_content,
-			int review_like_cnt, int depth, String review_reg_date) {
+			int review_like_cnt, int depth, LocalDateTime review_reg_date) {
 		super();
 		this.review_id = review_id;
 		this.user_id = user_id;
@@ -89,7 +91,7 @@ public class Review {
 		this.review_like_cnt = review_like_cnt;
 	}
 
-	public int isDepth() {
+	public int getDepth() {
 		return depth;
 	}
 
@@ -97,22 +99,19 @@ public class Review {
 		this.depth = depth;
 	}
 
-	public String getReview_reg_date() {
+	public LocalDateTime getReview_reg_date() {
 		return review_reg_date;
 	}
 
-	public void setReview_reg_date(String review_reg_date) {
+	public void setReview_reg_date(LocalDateTime review_reg_date) {
 		this.review_reg_date = review_reg_date;
 	}
 
 	@Override
 	public String toString() {
 		return "Review [review_id=" + review_id + ", user_id=" + user_id + ", program_id=" + program_id + ", parent_id="
-				+ parent_id + ", article_id=" + article_id + ", review_content=" + review_content + ", review_view_cnt="
-				+ ", review_like_cnt=" + review_like_cnt + ", depth=" + depth + ", review_reg_date="
-				+ review_reg_date + "]";
+				+ parent_id + ", article_id=" + article_id + ", review_content=" + review_content + ", review_like_cnt="
+				+ review_like_cnt + ", depth=" + depth + ", review_reg_date=" + review_reg_date + "]";
 	}
-    
-    
 }
 

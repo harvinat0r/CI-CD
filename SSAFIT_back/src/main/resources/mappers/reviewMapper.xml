@@ -68,8 +68,8 @@
 	</insert>
 	<!-- 게시판 리뷰 등록 -->
 	<insert id="insertReviewArticle" parameterType="Review">
-		INSERT INTO `review` (user_id, article_id, review_content, review_like_cnt, depth, review_reg_date)
-		VALUES (#{user_id}, #{article_id}, #{review_content}, #{review_like_cnt}, #{depth}, #{review_reg_date})
+		INSERT INTO `review` (user_id, article_id, review_content)
+		VALUES (#{user_id}, #{article_id}, #{review_content})
 	</insert>
 	
 	<!-- 리뷰 삭제 -->

@@ -1,5 +1,7 @@
 package com.ssafy.ssafit.model.dto;
 
+import java.time.LocalDateTime;
+
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(value="운동 프로그램 바구니", description = "프로그램 정보임")
@@ -13,7 +15,7 @@ public class Program {
 	private int program_review_cnt;
 	private int program_like_cnt;
 	private int program_unlike_cnt;
-	private String program_reg_date;
+	private LocalDateTime program_reg_date;
 	private int program_goal;
 	private String program_video_id;
 	
@@ -21,36 +23,9 @@ public class Program {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-
-	public Program(String user_id, String program_difficulty, String program_title, String program_content,
-			int program_goal, String program_video_id) {
-		super();
-		this.user_id = user_id;
-		this.program_difficulty = program_difficulty;
-		this.program_title = program_title;
-		this.program_content = program_content;
-		this.program_goal = program_goal;
-		this.program_video_id = program_video_id;
-	}
-
-
-
-	public Program(String user_id, String program_difficulty, String program_title, String program_content,
-			int program_goal) {
-		super();
-		this.user_id = user_id;
-		this.program_difficulty = program_difficulty;
-		this.program_title = program_title;
-		this.program_content = program_content;
-		this.program_goal = program_goal;
-	}
-
-
-
 	public Program(int program_id, String user_id, String program_difficulty, String program_title,
 			String program_content, int program_view_cnt, int program_review_cnt, int program_like_cnt,
-			int program_unlike_cnt, String program_reg_date, int program_goal, String program_video_id) {
+			int program_unlike_cnt, LocalDateTime program_reg_date, int program_goal, String program_video_id) {
 		super();
 		this.program_id = program_id;
 		this.user_id = user_id;
@@ -65,8 +40,6 @@ public class Program {
 		this.program_goal = program_goal;
 		this.program_video_id = program_video_id;
 	}
-
-
 
 	public int getProgram_id() {
 		return program_id;
@@ -132,15 +105,23 @@ public class Program {
 		this.program_like_cnt = program_like_cnt;
 	}
 
-	public String getProgram_reg_date() {
+	public int getProgram_unlike_cnt() {
+		return program_unlike_cnt;
+	}
+
+	public void setProgram_unlike_cnt(int program_unlike_cnt) {
+		this.program_unlike_cnt = program_unlike_cnt;
+	}
+
+	public LocalDateTime getProgram_reg_date() {
 		return program_reg_date;
 	}
 
-	public void setProgram_reg_date(String program_reg_date) {
+	public void setProgram_reg_date(LocalDateTime program_reg_date) {
 		this.program_reg_date = program_reg_date;
 	}
 
-	public int isProgram_goal() {
+	public int getProgram_goal() {
 		return program_goal;
 	}
 
@@ -156,16 +137,6 @@ public class Program {
 		this.program_video_id = program_video_id;
 	}
 
-	public int getProgram_unlike_cnt() {
-		return program_unlike_cnt;
-	}
-
-	public void setProgram_unlike_cnt(int program_unlike_cnt) {
-		this.program_unlike_cnt = program_unlike_cnt;
-	}
-
-
-
 	@Override
 	public String toString() {
 		return "Program [program_id=" + program_id + ", user_id=" + user_id + ", program_difficulty="
@@ -175,6 +146,4 @@ public class Program {
 				+ ", program_reg_date=" + program_reg_date + ", program_goal=" + program_goal + ", program_video_id="
 				+ program_video_id + "]";
 	}
-	
-	
 }
