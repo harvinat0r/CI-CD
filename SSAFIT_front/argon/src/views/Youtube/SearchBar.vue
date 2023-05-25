@@ -20,7 +20,7 @@ export default {
   methods: {
     ...mapActions(['searchYouTube', 'searchYouTubeAndSelectFirst']),
     onInput(event) {
-      this.searchTerm = event.target.value;
+      this.searchTerm = event.target.value + "운동";
     },
     onClick() {
       console.log(this.searchTerm);
@@ -30,7 +30,7 @@ export default {
   },
   created() {
     // load the search list on start up or hard refresh
-    const st = 'top music videos';
+    const st = '헬스';
     this.searchTerm = st;
     this.searchYouTubeAndSelectFirst(st);
   }

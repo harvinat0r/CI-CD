@@ -23,8 +23,9 @@
             <span class="nav-link-inner--text">관장님</span>
           </a>
           <div class="dropdown-menu-inner">
-            <a href="https://demos.creative-tim.com/vue-argon-design-system/documentation/"
-              class="media d-flex align-items-center">
+            <router-link to="/master" class="media d-flex align-items-center">
+
+           
               <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                 <i class="ni ni-spaceship"></i>
               </div>
@@ -34,8 +35,8 @@
                   그는 전설이다.
                 </p>
               </div>
-            </a>
-            <router-link :to="{ name: 'Test' }" class="media d-flex align-items-center">
+            </router-link>
+            <!-- <router-link to="/master" class="media d-flex align-items-center">
               <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
                 <i class="ni ni-ui-04"></i>
               </div>
@@ -45,7 +46,7 @@
                   자극 받는 말들
                 </p>
               </div>
-            </router-link>
+            </router-link> -->
           </div>
         </base-dropdown>
         <li class="nav-item">

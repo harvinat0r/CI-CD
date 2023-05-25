@@ -1,17 +1,24 @@
 <template>
-  <div id="the-top" class="ui container">
-    <h1 class="ui header center">Youtube Search App</h1>
-    <div class="ui centered stackable grid">
-      <div class="row">
-        <div class="nine wide column">
-          <VideoDetail></VideoDetail>
-        </div>
-        <div class="seven wide column">
-          <div class="row">
-            <SearchBar></SearchBar>
+  <div>
+    <div class="shape shape-style-1 bg-gradient-default">
+      <section class="section section-skew">
+
+      </section>
+    </div>
+    <div id="the-top" class="ui container">
+      <h1 class="ui header center">부위별 검색</h1>
+      <div class="ui centered stackable grid">
+        <div class="row">
+          <div class="nine wide column">
+            <VideoDetail></VideoDetail>
           </div>
-          <div class="row">
-            <VideoList></VideoList>
+          <div class="seven wide column">
+            <div class="row">
+              <SearchBar></SearchBar>
+            </div>
+            <div class="row">
+              <VideoList></VideoList>
+            </div>
           </div>
         </div>
       </div>

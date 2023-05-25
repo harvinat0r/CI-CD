@@ -2,7 +2,6 @@
   <div>
     <carousel-copy></carousel-copy>
 
-    <carousel></carousel>
   </div>
 </template>
 <script>

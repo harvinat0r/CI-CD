@@ -4,15 +4,13 @@ import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
 import Components from "./views/Components.vue";
 import Landing from "./views/Landing.vue";
-import Login from "./views/Login.vue";
-import Register from "./views/Register.vue";
-import Profile from "./views/Profile.vue";
+
 import VideoView from "@/views/VideoView.vue";
 import VideoList from "@/components/video/VideoList.vue";
 import LoginView from "./views/User/LoginView.vue";
 import ProfileView from "./views/User/ProfileView.vue";
 import RegisterView from "./views/User/RegisterView.vue";
-import Test from "./views/Test.vue";
+import Inbeom from "./views/Inbeom.vue";
 // 게시판(자유, 루틴연구소, 헬스친구찾기)
 import ArticleView from "@/views/Article.vue";
 import ArticleFree from "@/components/article/Free.vue";
@@ -33,30 +31,60 @@ export default new Router({
     {
       path: "/article",
       name: "Article",
-      component: ArticleView,
+      components: {
+        header: AppHeader,
+        default : ArticleView,
+        footer: AppFooter,
+      },
       children: [
         // 스프링에서 article_property 확인 필수
         {
           path: "",
           name: "ArticleFree",
-          component: ArticleFree,
+          components: {
+            header: AppHeader,
+            default : ArticleFree,
+            footer: AppFooter,
+          },
+         
         },
         {
           path: "routineResearch",
           name: "ArticleRoutineResearch",
-          component: ArticleRoutineResearch,
+          components: {
+            header: AppHeader,
+            default : ArticleRoutineResearch,
+            footer: AppFooter,
+          },
         },
         {
           path: "findFriends",
           name: "ArticleFindFriends",
-          component: ArticleFindFriends,
+          components: {
+            header: AppHeader,
+            default : ArticleFindFriends,
+            footer: AppFooter,
+          },
         },
         {
           path: "detail/:article_id",
           name: "ArticleDetail",
-          component: ArticleDetail,
+          components: {
+            header: AppHeader,
+            default :  ArticleDetail,
+            footer: AppFooter,
+          },
         },
       ],
+    },
+    {
+      path : "/master",
+      name : "Inbeom",
+      components: {
+        header: AppHeader,
+        default: Inbeom,
+        footer: AppFooter,
+      },
     },
     {
       path: "/ranking",
@@ -71,16 +99,12 @@ export default new Router({
       path: "/search",
       name: "search",
       components: {
-        // header: AppHeader,
+        header: AppHeader,
         default: YoutubeSearch,
-        // footer: AppFooter,
+        footer: AppFooter,
       },
     },
-    {
-      path: "/test",
-      name: "Test",
-      component: Test,
-    },
+    
     {
       path: "/video",
       name: "video",
@@ -89,7 +113,11 @@ export default new Router({
     {
       path: "/video/:youtubeId",
       name: "video",
-      component: VideoView,
+      components: {
+        header: AppHeader,
+        default : VideoView, 
+        footer: AppFooter,
+      },
     },
     {
       path: "/",
