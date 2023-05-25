@@ -22,7 +22,7 @@ export default new Vuex.Store({
     review: {},
   },
   getters: {
-    articleCnt: function (state) {
+    articleCnt: function(state) {
       return state.articles.length;
     },
   },
@@ -30,31 +30,31 @@ export default new Vuex.Store({
     SET_ARTICLE_REVIEWS: function (state, reviews) {
       state.reviews = reviews;
     },
-    SET_EXERCISES: function (state, exercises) {
+    SET_EXERCISES: function(state, exercises) {
       state.exercises = exercises;
     },
-    SET_ARTICLES: function (state, articles) {
+    SET_ARTICLES: function(state, articles) {
       state.articles = articles;
     },
-    SET_ARTICLE: function (state, article) {
+    SET_ARTICLE: function(state, article) {
       state.article = article;
     },
-    CREATE_USER: function (state, user) {
+    CREATE_USER: function(state, user) {
       state.users.push(user);
     },
-    SET_USERS: function (state, users) {
+    SET_USERS: function(state, users) {
       state.users = users;
     },
-    SET_USER: function (state, user) {
+    SET_USER: function(state, user) {
       state.user = user;
     },
-    SEARCH_NAME: function (state, users) {
+    SEARCH_NAME: function(state, users) {
       state.searchUsers = users;
     },
-    SET_LOGIN_USER: function (state, user) {
+    SET_LOGIN_USER: function(state, user) {
       state.loginUser = user;
     },
-    LOGOUT: function (state) {
+    LOGOUT: function(state) {
       state.loginUser = null;
     },
 
@@ -107,8 +107,8 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setArticles: function ({ commit }, article_property) {
-      console.log(article_property)
+    setArticles: function({ commit }, article_property) {
+      console.log(article_property);
       const API_URL = `${REST_API}/article/list/${article_property}`;
       axios({
         url: API_URL,
@@ -123,8 +123,8 @@ export default new Vuex.Store({
         });
     },
 
-    setArticle: function ({ commit }, article_id) {
-      console.log(article_id)
+    setArticle: function({ commit }, article_id) {
+      console.log(article_id);
       const API_URL = `${REST_API}/article/detail/${article_id}`;
       axios({
         url: API_URL,
@@ -139,8 +139,8 @@ export default new Vuex.Store({
         });
     },
 
-    createUser: function ({ commit }, user) {
-      console.log(user)
+    createUser: function({ commit }, user) {
+      console.log(user);
       const API_URL = `${REST_API}/user/regist`;
       axios({
         url: API_URL,
@@ -157,7 +157,7 @@ export default new Vuex.Store({
         });
     },
 
-    updateUser: function ({ commit }, user) {
+    updateUser: function({ commit }, user) {
       console.log(commit);
       const API_URL = `${REST_API}/user/${this.$store.state.loginUser.id}`;
       axios({
@@ -173,8 +173,10 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    deleteUser: function ({ state }, id) {
-      const API_URL = `${REST_API}/user/withdrawal/${this.$store.state.loginUser.id}`;
+    deleteUser: function({ state }, id) {
+      const API_URL = `${REST_API}/user/withdrawal/${
+        this.$store.state.loginUser.id
+      }`;
       axios({
         url: API_URL,
         method: "DELETE",
@@ -193,8 +195,8 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
-    }, 
-    setUsers: function ({ commit }) {
+    },
+    setUsers: function({ commit }) {
       const API_URL = `${REST_API}/user/ranking`;
       return axios({
         url: API_URL,
@@ -209,8 +211,10 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setUser: function ({ commit }, id) {
-      const API_URL = `${REST_API}/user/${this.$store.state.loginUser.id}/my-page`;
+    setUser: function({ commit }, id) {
+      const API_URL = `${REST_API}/user/${
+        this.$store.state.loginUser.id
+      }/my-page`;
       axios({
         url: API_URL,
         method: "GET",
@@ -222,8 +226,10 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    searchName: function ({ commit }, name) {
-      const API_URL = `${REST_API}/user/${this.$store.state.loginUser.id}/search`;
+    searchName: function({ commit }, name) {
+      const API_URL = `${REST_API}/user/${
+        this.$store.state.loginUser.id
+      }/search`;
       axios({
         url: API_URL,
         method: "GET",
@@ -239,17 +245,23 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setLoginUser: function ({ commit }, user) {
+    setLoginUser: function({ commit }, user) {
       const API_URL = `${REST_API}/user/login`;
+
       axios({
         url: API_URL,
         method: "POST",
+        params: user,
       })
         .then((res) => {
           let resUser = res.data;
-          if (resUser.id === user.id && resUser.password === user.password) {
+          console.log(res.data);
+          if (
+            resUser.user_id === user.id &&
+            resUser.user_password === user.password
+          ) {
             alert("로그인 성공!");
-            commit("SET_LOGIN_USER", res.data);
+            commit("SET_LOGIN_USER", resUser);
             router.push("/");
           } else {
             alert("로그인 실패");
@@ -260,7 +272,8 @@ export default new Vuex.Store({
         });
     },
     getReviews({ commit }, videoId) {
-      http.get(`/review/review`, videoId)
+      http
+        .get(`/review/review`, videoId)
         .then((res) => {
           commit("GET_REVIEWS", res.data);
         })
@@ -286,7 +299,8 @@ export default new Vuex.Store({
     },
 
     getReview({ commit }, reviewNum) {
-      http.get(`/review/review/${reviewNum}`)
+      http
+        .get(`/review/review/${reviewNum}`)
         .then((res) => {
           commit("GET_REVIEW", res.data);
         })
@@ -295,17 +309,17 @@ export default new Vuex.Store({
         });
     },
     updateReview({ commit }, review) {
-
-      console.log(review)
+      console.log(review);
       const API_URL = `${REST_API}/review/review`;
       axios({
         url: API_URL,
         method: "PUT",
         params: review,
-      }).then(() => {
-        commit("UPDATE_REVIEW", review);
-        router.push(`../reviewdetail/${review.reviewNum}`);
       })
+        .then(() => {
+          commit("UPDATE_REVIEW", review);
+          router.push(`../reviewdetail/${review.reviewNum}`);
+        })
         .catch((err) => {
           console.log(err);
         });

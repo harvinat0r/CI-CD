@@ -12,6 +12,7 @@ import VideoList from "@/components/video/VideoList.vue";
 import LoginView from "./views/User/LoginView.vue";
 import ProfileView from "./views/User/ProfileView.vue";
 import RegisterView from "./views/User/RegisterView.vue";
+import Test from "./views/Test.vue";
 // 게시판(자유, 루틴연구소, 헬스친구찾기)
 import ArticleView from "@/views/Article.vue";
 import ArticleFree from "@/components/article/Free.vue";
@@ -54,6 +55,11 @@ export default new Router({
       ],
     },
 
+    {
+      path: "/test",
+      name: "Test",
+      component: Test,
+    },
     {
       path: "/video",
       name: "video",
@@ -102,7 +108,7 @@ export default new Router({
     },
 
     {
-      path: "/user/:id/my-page",
+      path: "/user/my-page",
       name: "profile",
       components: {
         header: AppHeader,

@@ -30,8 +30,8 @@
                 class="mb-3"
                 placeholder="Id"
                 addon-left-icon="ni ni-email-83"
-                id = "id"
-                v-model = "id"
+                id="id"
+                v-model="id"
               >
               </base-input>
               <base-input
@@ -39,8 +39,8 @@
                 type="password"
                 placeholder="Password"
                 addon-left-icon="ni ni-lock-circle-open"
-                id = "password"
-                v-model = "password"
+                id="password"
+                v-model="password"
               >
               </base-input>
               <base-checkbox>
@@ -48,7 +48,9 @@
               </base-checkbox>
 
               <div class="text-center">
-                <base-button type="primary" class="my-4" @click = "login">로그인</base-button>
+                <base-button type="primary" class="my-4" @click="login"
+                  >로그인</base-button
+                >
               </div>
             </template>
           </card>
@@ -72,31 +74,28 @@
 <script>
 export default {
   name: "LoginForm",
-    data() {
-      return {
-        id: "",
-        password: "",
-      };
-    },
-    methods: {
-      login() {
-        if (
-          this.id.trim() === "" ||
-          this.password.trim() === ""
-         ) {
-          alert("아이디와 비밀번호를 모두 입력해주세요");
-          return;
-        }
+  data() {
+    return {
+      id: "",
+      password: "",
+    };
+  },
+  methods: {
+    login() {
+      if (this.id.trim() === "" || this.password.trim() === "") {
+        alert("아이디와 비밀번호를 모두 입력해주세요");
+        return;
+      }
 
-        let user = {
-          id: this.id,
-          password: this.password,
-        };
-        console.log(user.id);
-        console.log(user.password);
-        this.$store.dispatch("setLoginUser", user);
-      },
+      let user = {
+        id: this.id,
+        password: this.password,
+      };
+      console.log(user.id);
+      console.log(user.password);
+      this.$store.dispatch("setLoginUser", user);
     },
+  },
 };
 </script>
 <style></style>
