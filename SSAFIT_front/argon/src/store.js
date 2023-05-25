@@ -28,6 +28,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    REGIST_REVIEW: function(state, review) {
+      state.reviews.push(review);
+    },
     SET_ARTICLE_REVIEWS: function(state, reviews) {
       state.reviews = reviews;
     },
@@ -80,12 +83,31 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    updateReview: function ({}, review) {
+    registReview: function({ commit }, review) {
+      console.log(review);
+      const API_URL = `${REST_API}/review/write`;
+      axios({
+        url: API_URL,
+        method: "POST",
+        data: this.review,
+      })
+        .then((res) => {
+          console.log(res.data);
+          commit("REGIST_REVIEW", review);
+          alert("등록 완료!");
+        })
+        .catch((err) => {
+          console.log(err);
+          console.log("세상이 밉다...");
+        });
+    },
+    updateReview: function({}, review) {
       const API_URL = `${REST_API}/review/update`;
       axios({
         url: API_URL,
         method: "PUT",
         data: review,
+        params: review,
       })
         .then((res) => {
           console.log(res.data);
@@ -96,7 +118,7 @@ export default new Vuex.Store({
           console.log("세상이 밉다...");
         });
     },
-    deleteReview: function ({ state }, review_id) {
+    deleteReview: function({ state }, review_id) {
       const API_URL = `${REST_API}/review/delete/${review_id}`;
       axios({
         url: API_URL,
@@ -117,7 +139,7 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setArticleReviews: function ({ commit }, article_id) {
+    setArticleReviews: function({ commit }, article_id) {
       const API_URL = `${REST_API}/review/article/${article_id}`;
       axios({
         url: API_URL,

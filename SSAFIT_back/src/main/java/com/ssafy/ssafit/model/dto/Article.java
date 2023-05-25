@@ -1,5 +1,7 @@
 package com.ssafy.ssafit.model.dto;
 
+import java.time.LocalDateTime;
+
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(value="게시판 바구니", description = "게시판 정보임")
@@ -12,7 +14,7 @@ public class Article {
 	private int article_review_cnt;
 	private int article_like_cnt;
 	private int article_unlike_cnt;
-	private String article_reg_date;
+	private LocalDateTime article_reg_date;
 	private int article_property;
 	private String article_video_id;
 	
@@ -21,7 +23,7 @@ public class Article {
 	}
 
 	public Article(int article_id, String user_id, String article_title, String article_content, int article_view_cnt,
-			int article_review_cnt, int article_like_cnt, int article_unlike_cnt, String article_reg_date,
+			int article_review_cnt, int article_like_cnt, int article_unlike_cnt, LocalDateTime article_reg_date,
 			int article_property, String article_video_id) {
 		super();
 		this.article_id = article_id;
@@ -101,11 +103,11 @@ public class Article {
 		this.article_unlike_cnt = article_unlike_cnt;
 	}
 
-	public String getArticle_reg_date() {
+	public LocalDateTime getArticle_reg_date() {
 		return article_reg_date;
 	}
 
-	public void setArticle_reg_date(String article_reg_date) {
+	public void setArticle_reg_date(LocalDateTime article_reg_date) {
 		this.article_reg_date = article_reg_date;
 	}
 
@@ -133,6 +135,4 @@ public class Article {
 				+ ", article_unlike_cnt=" + article_unlike_cnt + ", article_reg_date=" + article_reg_date
 				+ ", article_property=" + article_property + ", article_video_id=" + article_video_id + "]";
 	}
-
-	
 }
