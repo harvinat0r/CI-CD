@@ -2,9 +2,7 @@
   <!-- 아래꺼가 색깔임 -->
   <div>
     <div class="shape shape-style-1 bg-gradient-default">
-      <section class="section section-skew">
-
-      </section>
+      <section class="section section-skew"></section>
     </div>
     <!-- <div v-for="(user, index) in users" :key="user.user_id" class="ranking">
       <div class="ranking-no">{{ index + 1 }}</div>
@@ -15,7 +13,7 @@
       <div class="sqaut">{{ user.squat }}</div>
     </div> -->
     <tbody>
-      <tr v-for="(user) in users" :key="user.user_id">
+      <tr v-for="user in users" :key="user.user_id">
         <td>
           <router-link class="TotalRanking" :to="`/ranking`">{{
             user.user_nickname
@@ -34,11 +32,9 @@ export default {
     ...mapState(["users"]),
     ...mapState(["loginUser"]),
   },
-  props: {
-
-  },
+  props: {},
   created() {
-    this.$store.dispatch("setUsers"), users;
+    this.$store.dispatch("setUsers");
   },
-}
+};
 </script>
