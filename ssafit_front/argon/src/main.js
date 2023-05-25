@@ -20,12 +20,16 @@ import App from "./App.vue";
 import router from "./router.js";
 import Argon from "./plugins/argon-kit";
 import "./registerServiceWorker";
-import store from './store'
+import store from "./store";
+import BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
+Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
 Vue.use(Argon);
 new Vue({
   router,
   store,
-  render: (h) => h(App)
+  render: (h) => h(App),
 }).$mount("#app");
