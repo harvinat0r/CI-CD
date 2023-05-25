@@ -29,11 +29,6 @@
               <base-button type="primary" @click="search">Button</base-button>
             </fieldset>
           </div>
-          <a
-            href="https://demos.creative-tim.com/argon-design-system/docs/components/alerts.html"
-            class="btn btn-white mt-4"
-            >See all components</a
-          >
         </div>
         <div class="col-lg-6 mb-lg-auto">
           <div
@@ -44,7 +39,7 @@
               <b-carousel-slide
                 v-for="(exercise, index) in exercises"
                 :key="index"
-                :img-src="`img/theme/${exercise.exercise_name}.jpg`"
+                :img-src="`img/theme/exercise/${exercise.exercise_name}.jpg`"
                 >{{ exercise.exercise_name }}</b-carousel-slide
               >
             </b-carousel>
@@ -57,7 +52,7 @@
 <script>
 import { BCarousel } from "bootstrap-vue/esm/components/carousel/carousel";
 import { BCarouselSlide } from "bootstrap-vue/esm/components/carousel/carousel-slide";
-import axios from "axios";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -67,8 +62,10 @@ export default {
   data() {
     return {
       time: "",
-      exercises: [],
     };
+  },
+  computed: {
+    ...mapState(["exercises"]),
   },
   created() {
     // 시간 세팅
@@ -76,21 +73,7 @@ export default {
     this.time = today.toLocaleDateString();
 
     // 주목해야 할 운동 설정
-    const REST_API = `http://localhost:9999`;
-    axios({
-      url: `${REST_API}/exercise/bySearch`,
-      method: "GET",
-    })
-      .then((res) => {
-        console.log(res.data);
-        this.exercises = res.data;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
-  mounted() {
-    console.log(this.$store);
+    this.$store.dispatch("setExercises");
   },
 };
 </script>
