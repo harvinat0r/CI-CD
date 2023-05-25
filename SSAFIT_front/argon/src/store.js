@@ -9,6 +9,7 @@ const REST_API = `http://localhost:9999`;
 
 export default new Vuex.Store({
   state: {
+    exercises: [],
     articles: [],
     article: {},
     loginUser: null,
@@ -25,6 +26,9 @@ export default new Vuex.Store({
     },
   },
   mutations: {
+    SET_EXERCISES: function (state, exercises) {
+      state.exercises = exercises;
+    },
     SET_ARTICLES: function (state, articles) {
       state.articles = articles;
     },
@@ -71,6 +75,20 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    setExercises: function ({ commit }) {
+      const API_URL = `${REST_API}/exercise/bySearch`;
+      axios({
+        url: API_URL,
+        method: "GET",
+      })
+        .then((res) => {
+          console.log(res.data);
+          commit("SET_EXERCISES", res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     setArticles: function ({ commit }, article_property) {
       console.log(article_property)
       const API_URL = `${REST_API}/article/list/${article_property}`;
