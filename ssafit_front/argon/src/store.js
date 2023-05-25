@@ -19,22 +19,22 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
-    CREATE_USER: function (state, user) {
+    CREATE_USER: function(state, user) {
       state.users.push(user);
     },
-    SET_USERS: function (state, users) {
+    SET_USERS: function(state, users) {
       state.users = users;
     },
-    SET_USER: function (state, user) {
+    SET_USER: function(state, user) {
       state.user = user;
     },
-    SEARCH_NAME: function (state, users) {
+    SEARCH_NAME: function(state, users) {
       state.searchUsers = users;
     },
-    SET_LOGIN_USER: function (state, user) {
+    SET_LOGIN_USER: function(state, user) {
       state.loginUser = user;
     },
-    LOGOUT: function (state) {
+    LOGOUT: function(state) {
       state.loginUser = null;
     },
 
@@ -59,8 +59,8 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    createUser: function ({ commit }, user) {
-      console.log(user)
+    createUser: function({ commit }, user) {
+      console.log(user);
       const API_URL = `${REST_API}/user/regist`;
       axios({
         url: API_URL,
@@ -77,7 +77,7 @@ export default new Vuex.Store({
         });
     },
 
-    updateUser: function ({ commit }, user) {
+    updateUser: function({ commit }, user) {
       console.log(commit);
       const API_URL = `${REST_API}/user/${this.$store.state.loginUser.id}`;
       axios({
@@ -93,8 +93,10 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    deleteUser: function ({ state }, id) {
-      const API_URL = `${REST_API}/user/withdrawal/${this.$store.state.loginUser.id}`;
+    deleteUser: function({ state }, id) {
+      const API_URL = `${REST_API}/user/withdrawal/${
+        this.$store.state.loginUser.id
+      }`;
       axios({
         url: API_URL,
         method: "DELETE",
@@ -113,8 +115,8 @@ export default new Vuex.Store({
         .catch((err) => {
           console.log(err);
         });
-    }, 
-    setUsers: function ({ commit }) {
+    },
+    setUsers: function({ commit }) {
       const API_URL = `${REST_API}/user/ranking`;
       return axios({
         url: API_URL,
@@ -129,8 +131,10 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setUser: function ({ commit }, id) {
-      const API_URL = `${REST_API}/user/${this.$store.state.loginUser.id}/my-page`;
+    setUser: function({ commit }, id) {
+      const API_URL = `${REST_API}/user/${
+        this.$store.state.loginUser.id
+      }/my-page`;
       axios({
         url: API_URL,
         method: "GET",
@@ -142,8 +146,10 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    searchName: function ({ commit }, name) {
-      const API_URL = `${REST_API}/user/${this.$store.state.loginUser.id}/search`;
+    searchName: function({ commit }, name) {
+      const API_URL = `${REST_API}/user/${
+        this.$store.state.loginUser.id
+      }/search`;
       axios({
         url: API_URL,
         method: "GET",
@@ -159,7 +165,7 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setLoginUser: function ({ commit }, user) {
+    setLoginUser: function({ commit }, user) {
       const API_URL = `${REST_API}/user/login`;
       console.log("여기까진돼?");
       console.log(user.id);
@@ -171,16 +177,19 @@ export default new Vuex.Store({
         .then((res) => {
           // res.data하면 db자료가 가져와지네
           let resUser = res.data;
-          if (resUser.user_id === user.id && resUser.user_password === user.password) {
+          if (
+            resUser.user_id === user.id &&
+            resUser.user_password === user.password
+          ) {
             alert("로그인 성공!");
-            commit("SET_LOGIN_USER", res.data);
+            commit("SET_LOGIN_USER", resUser);
             router.push("/");
           } else {
             console.log(resUser.id);
             console.log(resUser.password);
             console.log(res);
             console.log(res.data.user_id);
-            
+
             alert("로그인 실패");
           }
         })
@@ -189,7 +198,8 @@ export default new Vuex.Store({
         });
     },
     getReviews({ commit }, videoId) {
-      http.get(`/review/review`, videoId)
+      http
+        .get(`/review/review`, videoId)
         .then((res) => {
           commit("GET_REVIEWS", res.data);
         })
@@ -215,7 +225,8 @@ export default new Vuex.Store({
     },
 
     getReview({ commit }, reviewNum) {
-      http.get(`/review/review/${reviewNum}`)
+      http
+        .get(`/review/review/${reviewNum}`)
         .then((res) => {
           commit("GET_REVIEW", res.data);
         })
@@ -224,17 +235,17 @@ export default new Vuex.Store({
         });
     },
     updateReview({ commit }, review) {
-
-      console.log(review)
+      console.log(review);
       const API_URL = `${REST_API}/review/review`;
       axios({
         url: API_URL,
         method: "PUT",
         params: review,
-      }).then(() => {
-        commit("UPDATE_REVIEW", review);
-        router.push(`../reviewdetail/${review.reviewNum}`);
       })
+        .then(() => {
+          commit("UPDATE_REVIEW", review);
+          router.push(`../reviewdetail/${review.reviewNum}`);
+        })
         .catch((err) => {
           console.log(err);
         });
