@@ -21,25 +21,21 @@ export default new Vuex.Store({
     review: {},
   },
   getters: {
-    articleCnt: function (state) {
+    articleCnt: function(state) {
       return state.articles.length;
     },
   },
   mutations: {
-<<<<<<< HEAD:ssafit_front/argon/src/store.js
-    CREATE_USER: function(state, user) {
-=======
-    SET_EXERCISES: function (state, exercises) {
+    SET_EXERCISES: function(state, exercises) {
       state.exercises = exercises;
     },
-    SET_ARTICLES: function (state, articles) {
+    SET_ARTICLES: function(state, articles) {
       state.articles = articles;
     },
-    SET_ARTICLE: function (state, article) {
+    SET_ARTICLE: function(state, article) {
       state.article = article;
     },
-    CREATE_USER: function (state, user) {
->>>>>>> 79c9bd17afa0a878edc748f40837f3d978788c67:SSAFIT_front/argon/src/store.js
+    CREATE_USER: function(state, user) {
       state.users.push(user);
     },
     SET_USERS: function(state, users) {
@@ -79,11 +75,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-<<<<<<< HEAD:ssafit_front/argon/src/store.js
-    createUser: function({ commit }, user) {
-      console.log(user);
-=======
-    setExercises: function ({ commit }) {
+    setExercises: function({ commit }) {
       const API_URL = `${REST_API}/exercise/bySearch`;
       axios({
         url: API_URL,
@@ -97,8 +89,8 @@ export default new Vuex.Store({
           console.log(err);
         });
     },
-    setArticles: function ({ commit }, article_property) {
-      console.log(article_property)
+    setArticles: function({ commit }, article_property) {
+      console.log(article_property);
       const API_URL = `${REST_API}/article/list/${article_property}`;
       axios({
         url: API_URL,
@@ -113,8 +105,8 @@ export default new Vuex.Store({
         });
     },
 
-    setArticle: function ({ commit }, article_id) {
-      console.log(article_id)
+    setArticle: function({ commit }, article_id) {
+      console.log(article_id);
       const API_URL = `${REST_API}/article/detail/${article_id}`;
       axios({
         url: API_URL,
@@ -129,9 +121,8 @@ export default new Vuex.Store({
         });
     },
 
-    createUser: function ({ commit }, user) {
-      console.log(user)
->>>>>>> 79c9bd17afa0a878edc748f40837f3d978788c67:SSAFIT_front/argon/src/store.js
+    createUser: function({ commit }, user) {
+      console.log(user);
       const API_URL = `${REST_API}/user/regist`;
       axios({
         url: API_URL,
@@ -244,26 +235,11 @@ export default new Vuex.Store({
       })
         .then((res) => {
           let resUser = res.data;
-<<<<<<< HEAD:ssafit_front/argon/src/store.js
-          if (
-            resUser.user_id === user.id &&
-            resUser.user_password === user.password
-          ) {
-=======
           if (resUser.id === user.id && resUser.password === user.password) {
->>>>>>> 79c9bd17afa0a878edc748f40837f3d978788c67:SSAFIT_front/argon/src/store.js
             alert("로그인 성공!");
             commit("SET_LOGIN_USER", resUser);
             router.push("/");
           } else {
-<<<<<<< HEAD:ssafit_front/argon/src/store.js
-            console.log(resUser.id);
-            console.log(resUser.password);
-            console.log(res);
-            console.log(res.data.user_id);
-
-=======
->>>>>>> 79c9bd17afa0a878edc748f40837f3d978788c67:SSAFIT_front/argon/src/store.js
             alert("로그인 실패");
           }
         })
