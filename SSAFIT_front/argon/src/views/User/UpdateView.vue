@@ -54,6 +54,7 @@ export default {
     ...mapState(['loginUser']),
   },
   methods: {
+    ...mapState([`loginUser`]),
     updateUser() {
       
       this.$store.dispatch('updateUser', this.loginUser);

@@ -30,11 +30,7 @@
               <div
                 class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center"
               >
-                <div class="card-profile-actions py-4 mt-lg-0">
-                  <base-button type="info" size="sm" class="mr-4"
-                    >회원 정보 수정</base-button
-                  >
-                </div>
+                
               </div>
               <div class="col-lg-4 order-lg-1">
                 <div class="card-profile-stats d-flex justify-content-center">
@@ -47,7 +43,7 @@
                     <span class="description">Bench-Press</span>
                   </div>
                   <div>
-                    <span class="heading">200</span>
+                    <span class="heading">300</span>
                     <span class="description">Dead-lift</span>
                   </div>
                 </div>

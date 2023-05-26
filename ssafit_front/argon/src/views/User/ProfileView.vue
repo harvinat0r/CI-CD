@@ -19,51 +19,27 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img
-                      v-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 100"
-                      v-lazy="'img/theme/pokemon/꼬마돌.webp'"
-                      class="rounded-circle"
-                    />
-                    <img
-                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 200"
-                      v-lazy="'img/theme/pokemon/데구리.webp'"
-                      class="rounded-circle"
-                    />
-                    <img
-                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 300"
-                      v-lazy="'img/theme/pokemon/딱구리.webp'"
-                      class="rounded-circle"
-                    />
-                    <img
-                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift<= 400"
-                      v-lazy="'img/theme/pokemon/알통몬.webp'"
-                      class="rounded-circle"
-                    />
-                    <img
-                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift<= 500"
-                      v-lazy="'img/theme/pokemon/근육몬.webp'"
-                      class="rounded-circle"
-                    />
-                    <img
-                      v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 600"
-                      v-lazy="'img/theme/pokemon/괴력몬.webp'"
-                      class="rounded-circle"
-                    />
-                    <img
-                      v-else
-                      v-lazy="'img/theme/pokemon/피카츄.webp'"
-                      class="rounded-circle"
-                    />
+                    <img v-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 100"
+                      v-lazy="'img/theme/pokemon/꼬마돌.webp'" class="rounded-circle" />
+                    <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 200"
+                      v-lazy="'img/theme/pokemon/데구리.webp'" class="rounded-circle" />
+                    <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 300"
+                      v-lazy="'img/theme/pokemon/딱구리.webp'" class="rounded-circle" />
+                    <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 400"
+                      v-lazy="'img/theme/pokemon/알통몬.webp'" class="rounded-circle" />
+                    <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 500"
+                      v-lazy="'img/theme/pokemon/근육몬.webp'" class="rounded-circle" />
+                    <img v-else-if="loginUser.squat + loginUser.bench_press + loginUser.dead_lift <= 600"
+                      v-lazy="'img/theme/pokemon/괴력몬.webp'" class="rounded-circle" />
+                    <img v-else v-lazy="'img/theme/pokemon/피카츄.webp'" class="rounded-circle" />
                   </a>
                 </div>
               </div>
-              <div
-                class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center"
-              >
+              <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                 <div class="card-profile-actions py-4 mt-lg-0">
-                  <base-button type="info" size="sm" class="mr-4" v-if = "getUser"
-                    >회원 정보 수정</base-button
-                  >
+                  <router-link to="/user/update" class="media d-flex align-items-center">
+                    <base-button type="info" size="sm" class="mr-4" v-if="getUser">회원 정보 수정</base-button>
+                  </router-link>
                 </div>
               </div>
               <div class="col-lg-4 order-lg-1">
@@ -129,7 +105,7 @@ export default {
       }
     },
   },
-  created() {},
+  created() { },
   methods: {
     updateUser() {
       this.$router.push({ name: "updateUser" });

@@ -72,6 +72,9 @@ export default new Vuex.Store({
     UPDATE_REVIEW(state, payload) {
       state.reviews = payload;
     },
+    UPDATE_USER(state, payload) {
+      state.loginUser = payload;
+    },
     GET_REVIEW(state, payload) {
       state.review = payload;
     },
@@ -95,6 +98,24 @@ export default new Vuex.Store({
           console.log(res.data);
           commit("REGIST_REVIEW", review);
           alert("등록 완료!");
+        })
+        .catch((err) => {
+          console.log(err);
+          console.log("세상이 밉다...");
+        });
+    },
+    updateUser : function({}, user){
+      const API_URL = `${REST_API}/user/update`;
+      axios({
+        url: API_URL,
+        method: "PUT",
+        data: user,
+        params: user,
+      })
+        .then((res) => {
+          console.log(res.data);
+          alert("수정 완료!");
+          router.push({ name: "ProfileView", params: loginUser });
         })
         .catch((err) => {
           console.log(err);

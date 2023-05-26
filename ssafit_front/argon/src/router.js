@@ -21,6 +21,7 @@ import ArticleFindFriends from "@/components/article/FindFriends.vue";
 import TotalRanking from "./views/Ranking/TotalRanking.vue";
 // 유튜브
 import YoutubeSearch from "./views/YoutubeSearch.vue";
+import UpdateView from "./views/User/UpdateView.vue";
 
 Vue.use(Router);
 
@@ -86,6 +87,15 @@ export default new Router({
         footer: AppFooter,
       },
     },
+    {
+      path : "/user/update",
+      name : "UpdateView",
+      components: {
+        header: AppHeader,
+        default: UpdateView,
+        footer: AppFooter,
+      },
+    } , 
     {
       path: "/ranking",
       name: "ranking",
