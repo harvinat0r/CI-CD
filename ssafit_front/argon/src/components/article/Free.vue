@@ -1,7 +1,13 @@
 <template>
   <div class="container">
+    <br />
+    <br />
     <h2>자유게시판</h2>
+    <br />
+    <br />
     <h4>등록된 사용자의 수 : {{ articleCnt }}</h4>
+    <br />
+    <br />
     <div v-if="articleCnt">
       <b-table-simple hover :items="articles" class="user-list">
         <b-thead class="text-center">

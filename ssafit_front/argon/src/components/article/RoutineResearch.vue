@@ -1,7 +1,16 @@
 <template>
   <div class="container">
+    <br />
+    <br />
     <h2>루틴연구소</h2>
+
+    <br />
+    <br />
+
     <h4>등록된 사용자의 수 : {{ articleCnt }}</h4>
+    <br />
+    <br />
+
     <div v-if="articleCnt">
       <b-table-simple class="user-list">
         <colgroup>

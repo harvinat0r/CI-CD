@@ -21,11 +21,12 @@
         </td>
       </tr>
     </tbody> -->
+    <br />
+    <br />
+    <br />
+    <br />
     <div>
-        <b-table-simple
-          hover
-          :items="users"
-        >
+      <b-table-simple hover :items="users">
         <b-thead class="text-center">
           <b-tr>
             <b-th>순위</b-th>
@@ -34,12 +35,11 @@
             <b-th>Squat</b-th>
             <b-th>Bench-Press</b-th>
             <b-th>Dead-Lift</b-th>
-
           </b-tr>
         </b-thead>
         <b-tbody class="text-center">
           <b-tr v-for="(user, index) in users" :key="user.user_id">
-            <b-td>{{ index+1 }}</b-td>
+            <b-td>{{ index + 1 }}</b-td>
             <b-td>
               <b-link :to="`/user/${user.user_id}`">{{
                 user.user_nickname
@@ -49,11 +49,10 @@
             <b-td>{{ user.squat }}</b-td>
             <b-td>{{ user.bench_press }}</b-td>
             <b-td>{{ user.dead_lift }}</b-td>
-
           </b-tr>
         </b-tbody>
-        </b-table-simple>
-      </div>
+      </b-table-simple>
+    </div>
   </div>
 </template>
 <script>
