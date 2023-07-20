@@ -18,7 +18,8 @@ jobs:
     # 작업 실행 환경 이미지 설정
     # ubuntu 최신버전
     runs-on: ubuntu-latest
-
+    
+    # 주석 수정수정
     # 실행할 명령들을 순서에 맞게 나열
     steps:
       # 현재 프로젝트로 작업영역 설정
